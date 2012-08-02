@@ -109,6 +109,7 @@
 \RequirePackage[colorlinks=true,citecolor=Blue,linkcolor=black,urlcolor=Blue,bookmarks=false]{hyperref}
 \RequirePackage{xspace}
 \RequirePackage[normalem]{ulem}
+\RequirePackage[latin1]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{booktabs}
 \RequirePackage{listings}
