@@ -1,0 +1,105 @@
+\documentclass[ngerman]{cgsthesis}
+
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+%\usepackage[numbers]{natbib}
+\usepackage{natbib}
+
+\definecolor{codeKeyword}{rgb}{0.0,0.0,1.0} 
+\definecolor{codeComment}{rgb}{0.0,0.5,0.0} 
+\definecolor{codeBkgnd}{rgb}{0.95,0.95,0.95} 
+\definecolor{codeFrame}{rgb}{0.8,0.8,0.8} 
+\lstset{
+	language=C,
+	morekeywords={vec2,vec3,vec4,mat2,sampler2D,uniform},
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor=\color{codeBkgnd},
+	rulecolor=\color{codeFrame},
+	keywordstyle=\color{codeKeyword}, 
+	commentstyle=\color{codeComment}, 
+	numberbychapter=true,
+	numbersep=10pt, 
+	tabsize=4,             
+	numbers=left,             
+	numberstyle=\tiny,
+	captionpos=b,
+	frame=single,
+	framesep=6pt,
+	xleftmargin=23pt,
+	xrightmargin=7pt,
+	framexleftmargin=16pt,
+   abovecaptionskip=\medskipamount}
+
+\logo{graphics/logo_black}
+\title{Titel der Arbeit} 
+%\subtitle{Untertitel} % z.B. englischer Titel bei Bachelorarbeit
+
+%\subject{%
+%    Bachelorarbeit\\
+%    zur Erlangung des akademischen Grades\\
+%    "Bachelor of Science"\\
+%    (B.Sc.)\\
+%    im Studiengang IT-Systems Engineering\\
+%    des	 Hasso-Plattner-Instituts an der\\
+%    Universit\"at Potsdam
+%    \vfill
+%    vorgelegt von}
+
+%\subject{%
+%    Masterarbeit\\
+%    zur Erlangung des akademischen Grades\\
+%    "Master of Science"\\
+%    (M.Sc.)\\
+%    im Studiengang IT-Systems Engineering\\
+%    des	 Hasso-Plattner-Instituts an der\\
+%    Universit\"at Potsdam
+%    \vfill
+%    vorgelegt von}
+
+\subject{%
+    Dissertation\\
+    zur Erlangung des akademischen Grades\\
+    "doctor rerum naturalium"\\
+    (Dr.\ rer.\ nat.)\\
+    in der Wissenschaftsdisziplin Informatik
+    \vfill
+    eingereicht an der\\
+    Mathematisch-Naturwissenschaftlichen Fakult\"at\\
+    der Universit\"at Potsdam\\
+    \vfill
+    von}
+
+\author{Foo Bar}
+
+%\publishers{%
+%    Aufgabenstellung und Anleitung:\\
+%    Prof.\ Dr.\ J\"urgen D\"ollner\\
+%    Max Mustermann}
+
+\place{Potsdam}
+\date{\today} 
+
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents\cleardoublepage
+\include{preface}
+
+\mainmatter
+\include{chap1}
+\include{chap2}
+\include{chap3}
+
+\appendix
+\include{appn1}
+\include{appn2}
+
+\backmatter
+
+%\bibliographystyle{plainnat}
+\bibliographystyle{apalike2}
+\bibliography{foo-thesis}
+
+\end{document}
