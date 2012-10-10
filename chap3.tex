@@ -1,4 +1,4 @@
-% !TeX root = foo-thesis.tex
+%!TEX root = foo-thesis.tex
 
 \chapter{Sample File from SIAM \LaTeX\ Book Macro Package}
 
@@ -332,14 +332,14 @@ then
 
 \noindent{\em Proof.}
 Applying integration by parts, we obtain
-\begin{eqnarray*}
-\int_0^{\infty} e^{-2s_0 t} [v^2(t)-v^2(0)] dt
-&=&\lim_{t\rightarrow \infty}\left (
+\begin{align*}
+\int_0^{\infty} e^{-2s_0 t}&[v^2(t)-v^2(0)] dt\\
+&=\lim_{t\rightarrow \infty}\left (
 -\frac{1}{2s_0}e^{-2s_0 t}v^2(t) \right ) +\frac{1}{s_0}
 \int_0^{\infty} e^{-2s_0 t}v^{(1)}(t)v(t)dt\\
-&\leq& \frac{1}{s_0} \int_0^{\infty} e^{-2s_0 t} v^{(1)}(t)v(t) dt \;\;
+&\leq \frac{1}{s_0} \int_0^{\infty} e^{-2s_0 t} v^{(1)}(t)v(t) dt \;\;
 \leq \;\; 0.
-\end{eqnarray*}
+\end{align*}
 
 \begin{corollary}\label{c4.1}
 Let $ \bfE $ satisfy $(5)$--$(6)$ and
@@ -437,7 +437,8 @@ $F$-evaluations, and run times required to reduce the residual norm by
 a factor of $\e$. For each method, the number of {\rm GMRES$(m)$} iterations  
 and $F$-evaluations was the same in every trial.}
 \footnotesize
-\centerline{\begin{tabular}{|c|c|c|c|c|c|} \hline
+\centering
+\begin{tabular}{|c|c|c|c|c|c|} \hline
 && Number of & Number of & Mean Run Time & Standard \\
 Method & $\e$ & Iterations & $F$-Evaluations& (Seconds) & Deviation \\ \hline
 \lower.3ex\hbox{EHA2} & \lower.3ex\hbox{$10^{-10}$} & \lower.3ex\hbox{26} &
@@ -449,7 +450,7 @@ FD4 & $10^{-12}$ & 30 & 132 & 81.35 & .3730 \\ \hline
 \lower.3ex\hbox{EHA6} & \lower.3ex\hbox{$10^{-12}$} & \lower.3ex\hbox{30} & 
 \lower.3ex\hbox{48} & \lower.3ex\hbox{58.56} & \lower.3ex\hbox{.1952} \\ 
 FD6 & $10^{-12}$ & 30 & 198 & 100.6 & .3278 \\ \hline  
-\end{tabular}}
+\end{tabular}
 \label{diffstats} 
 \end{table}
 
