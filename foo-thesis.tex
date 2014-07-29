@@ -1,37 +1,28 @@
-\documentclass[11pt,ngerman]{cgsthesis}
+%\documentclass[ngerman,oneside]{cgsthesis}
+\documentclass[ngerman]{cgsthesis}
 
-\usepackage[latin1]{inputenc}
-\usepackage{natbib}
-%\usepackage[numbers]{natbib}
-\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage[defernumbers=true,natbib=true,backend=bibtex,style=numeric]{biblatex}
 
+% Configure Biblatex
+
+\DeclareBibliographyCategory{cited}
+\DeclareBibliographyCategory{supplementary}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+\newcommand{\citesupplementary}[1]{\nocite{#1}\addtocategory{supplementary}{#1}}
+\DefineBibliographyStrings{ngerman}{
+  andothers = {\emph{et~al.}}
+}
+\addbibresource{foo-thesis.bib}
+
+% Code listings
+
+\lstloadlanguages{C++}
 \usepackage{listings}
-\definecolor{codeKeyword}{rgb}{0.0,0.0,1.0} 
-\definecolor{codeComment}{rgb}{0.0,0.5,0.0} 
-\definecolor{codeBkgnd}{rgb}{0.95,0.95,0.95} 
-\definecolor{codeFrame}{rgb}{0.8,0.8,0.8} 
-\lstset{
-	language=C,
-	morekeywords={vec2,vec3,vec4,mat2,sampler2D,uniform},
-	basicstyle=\footnotesize\ttfamily,
-	backgroundcolor=\color{codeBkgnd},
-	rulecolor=\color{codeFrame},
-	keywordstyle=\color{codeKeyword}, 
-	commentstyle=\color{codeComment}, 
-	numberbychapter=true,
-	numbersep=10pt, 
-	tabsize=4,             
-	numbers=left,             
-	numberstyle=\tiny,
-	captionpos=b,
-	frame=single,
-	framesep=6pt,
-	xleftmargin=23pt,
-	xrightmargin=7pt,
-	framexleftmargin=16pt,
-   abovecaptionskip=\medskipamount}
+\usepackage{glsl}
 
 \logo{graphics/logo_black}
+
 \title{Titel der Arbeit} 
 %\subtitle{Untertitel} % z.B. englischer Titel bei Bachelorarbeit
 
@@ -84,8 +75,11 @@
 \begin{document}
 
 \frontmatter
+
 \maketitle
-\tableofcontents\cleardoublepage
+
+\tableofcontents
+
 \include{preface}
 
 \mainmatter
@@ -93,14 +87,22 @@
 \include{chap2}
 \include{chap3}
 
+\printbibliography[title={Literaturverzeichnis},category=cited,heading=bibintoc]
+
+% Further Reading
+\citesupplementary{Alvarez.etal-1992}
+\printbibliography[title={Weiterf{"u}hrende Literatur},category=supplementary,resetnumbers=true,heading=bibintoc]
+
+% Debug: uncited
+%\nocite{*}
+%\printbibliography[title={Unzitiert},notcategory=cited,resetnumbers=true,heading=bibintoc]
+
 \appendix
 \include{appn1}
 \include{appn2}
 
 \backmatter
 
-%\bibliographystyle{plainnat}
-\bibliographystyle{apalike2}
-\bibliography{foo-thesis}
+\include{statutorydeclaration}
 
 \end{document}
