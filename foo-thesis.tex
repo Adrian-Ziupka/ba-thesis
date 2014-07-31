@@ -2,10 +2,10 @@
 \documentclass[ngerman]{cgsthesis}
 
 \usepackage[utf8]{inputenc}
-\usepackage[defernumbers=true,natbib=true,backend=bibtex,style=numeric]{biblatex}
 
 % Configure Biblatex
 
+\usepackage[defernumbers=true,natbib=true,backend=bibtex,style=numeric]{biblatex}
 \DeclareBibliographyCategory{cited}
 \DeclareBibliographyCategory{supplementary}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
@@ -13,13 +13,23 @@
 \DefineBibliographyStrings{ngerman}{
   andothers = {\emph{et~al.}}
 }
+\DefineBibliographyStrings{english}{
+  andothers = {\emph{et~al.}}
+}
 \addbibresource{foo-thesis.bib}
 
 % Code listings
 
-\lstloadlanguages{C++}
 \usepackage{listings}
+\lstloadlanguages{C++}
 \usepackage{glsl}
+
+% Thesis development
+
+\usepackage{cgsnotes}
+\usepackage{cgsparagraphclassification}
+
+% Title page
 
 \logo{graphics/logo_black}
 
@@ -102,6 +112,9 @@
 \include{appn2}
 
 \backmatter
+
+% List of ToDos
+\listoftodos
 
 \include{statutorydeclaration}
 
