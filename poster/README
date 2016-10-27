@@ -1,0 +1,7 @@
+Latex CGS Poster Template
+
+Requirements for Usage:
+
+1) Miktex >= 2.9
+2) Package "tikzposter" >= 2.0! (beware of old package repositories)
+3) Copy all files in the "tikzposter" directory of the template to your tex directory, e.g.: "D:\MiKTeX 2.9\tex\latex\tikzposter"

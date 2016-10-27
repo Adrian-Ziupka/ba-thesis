@@ -1,0 +1,52 @@
+\documentclass[aspectratio=169,10pt,english]{beamer} 
+\usetheme{cgs}
+
+\usepackage{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[labelformat=empty,textfont=small,justification=centering]{caption}
+\usepackage[labelformat=empty,textfont=scriptsize,justification=centering]{subcaption}
+\usepackage{datetime}
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{multirow}
+%\usepackage{gitinfo}
+
+\usepackage{inconsolata}
+\usepackage{listings}
+\input{glsl-lstset}
+
+
+\hypersetup{bookmarksopen=false}
+
+\providecommand*{\what}[1]{\widehat{#1}}
+\providecommand*{\wtilde}[1]{\widetilde{#1}}
+
+\title{Grafikprogrammierung mit C++ und OpenGL}
+\author{Stefan Buschmann, Daniel Limberger, Amir Semmo}
+\institute{Hasso-Plattner-Institut}
+\date{SoSe~2013}
+
+\setbeamercolor{postit}{fg=black,bg=white}
+
+\newcommand<>{\fullsizegraphic}[2]
+{
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[at=(current page.center)]
+	{
+		\includegraphics[width=\paperwidth]{#1}
+	};
+	\end{tikzpicture}
+
+	\vspace{-0.33\paperheight}\hfill
+	\begin{beamercolorbox}[wd=0.5\paperwidth,ht=11mm,dp=1ex,right,rightskip=1cm]{postit}
+		\fontsize{8mm}{0}\selectfont  \uppercase{\textbf{#2}}
+		\vspace{2mm}
+	\end{beamercolorbox}
+	\hspace{-2cm}
+}
+
+\newcommand<>{\grayout}{\textcolor{gray}}
