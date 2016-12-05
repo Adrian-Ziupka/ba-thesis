@@ -11,10 +11,10 @@
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 \newcommand{\citesupplementary}[1]{\nocite{#1}\addtocategory{supplementary}{#1}}
 \DefineBibliographyStrings{ngerman}{
-  andothers = {\emph{et~al.}}
+  andothers = {\emph{et~al\adddot}}
 }
 \DefineBibliographyStrings{english}{
-  andothers = {\emph{et~al.}}
+  andothers = {\emph{et~al\adddot}}
 }
 \addbibresource{foo-thesis.bib}
 
@@ -33,7 +33,7 @@
 
 \logo{graphics/logo_black}
 
-\title{Titel der Arbeit} 
+\title{Titel der Arbeit}
 %\subtitle{Untertitel} % z.B. englischer Titel bei Bachelorarbeit
 
 %\subject{%
@@ -79,7 +79,7 @@
 %    Max Mustermann}
 
 \place{Potsdam}
-\date{\today} 
+\date{\today}
 
 
 \begin{document}
