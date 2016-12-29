@@ -16,6 +16,9 @@
 \DefineBibliographyStrings{english}{
   andothers = {\emph{et~al\adddot}}
 }
+% we don't care about these
+\AtEveryBibitem{\clearlist{location}}
+\AtEveryBibitem{\clearfield{address}}
 \addbibresource{foo-thesis.bib}
 
 % Code listings
