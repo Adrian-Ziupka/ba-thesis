@@ -51,7 +51,7 @@
 
 \RequirePackage{scrhack}
 \RequirePackage{scrpage2}
-\RequirePackage{babel}
+\RequirePackage[ngerman,english]{babel}
 \RequirePackage{amsmath,amsthm}
 \RequirePackage{printlen}
 
@@ -123,10 +123,8 @@
 \RequirePackage{listings}
 \RequirePackage[capitalise,noabbrev,nameinlink]{cleveref}
 \RequirePackage[normal,labelfont=bf,textfont=it,font=small]{caption}
-\captionsetup[figure]{skip=\medskipamount,belowskip=-7pt}
-\captionsetup[table]{skip=0pt,belowskip=\medskipamount}
 \RequirePackage[labelformat=simple,labelfont=md,textfont=it,font=scriptsize,
-                skip=\medskipamount,belowskip=0pt,justification=centering]{subcaption}
+                justification=centering]{subcaption}
 \renewcommand\thesubfigure{(\alph{subfigure})}
 \advance\textfloatsep 8pt
 \def\lst@MakeCaption#1{% #1 is `t' or `b'
@@ -207,13 +205,13 @@
 }
 \setkomafont{pageheadfoot}{\cgs@dispfamily\footnotesize}
 \pagestyle{scrheadings}
-\clearscrheadfoot 
-\ihead{\headmark} 
-\ohead{\pagemark} 
+\clearscrheadfoot
+\ihead{\headmark}
+\ohead{\pagemark}
 \cfoot[\pagemark]{}
 \setheadsepline{.4pt}
 \renewcommand*{\chaptermarkformat}{\chapappifchapterprefix{\ }\thechapter. \ }
-\renewcommand*{\sectionmarkformat}{\thesection. \ } 
+\renewcommand*{\sectionmarkformat}{\thesection. \ }
 \renewcommand*{\subsectionmarkformat}{\thesubsection. \ }
 
 \setkomafont{dictumtext}{\itshape\small}

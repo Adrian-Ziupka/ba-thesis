@@ -1,11 +1,11 @@
 %\documentclass[ngerman,oneside]{cgsthesis}
-\documentclass[ngerman]{cgsthesis}
+\documentclass{cgsthesis}
 
 \usepackage[utf8]{inputenc}
 
 % Configure Biblatex
 
-\usepackage[defernumbers=true,natbib=true,backend=bibtex,style=numeric,maxcitenames=2,maxbibnames=50]{biblatex}
+\usepackage[defernumbers=true,natbib=true,backend=biber,style=numeric,maxcitenames=2,maxbibnames=50]{biblatex}
 \DeclareBibliographyCategory{cited}
 \DeclareBibliographyCategory{supplementary}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
@@ -16,6 +16,9 @@
 \DefineBibliographyStrings{english}{
   andothers = {\emph{et~al\adddot}}
 }
+% we don't care about these
+\AtEveryBibitem{\clearlist{location}}
+\AtEveryBibitem{\clearfield{address}}
 \addbibresource{foo-thesis.bib}
 
 % Code listings
@@ -79,10 +82,12 @@
 %    Max Mustermann}
 
 \place{Potsdam}
-\date{\today}
+\date{\begin{otherlanguage}{ngerman} \today \end{otherlanguage}}
 
 
 \begin{document}
+
+\selectlanguage{ngerman}
 
 \frontmatter
 
@@ -97,11 +102,20 @@
 \include{chap2}
 \include{chap3}
 
+
+% force line breaks inside URLs
+\begingroup
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\sloppy
+
 \printbibliography[title={Literaturverzeichnis},category=cited,heading=bibintoc]
 
 % Further Reading
 \citesupplementary{Alvarez.etal-1992}
 \printbibliography[title={Weiterf{"u}hrende Literatur},category=supplementary,resetnumbers=true,heading=bibintoc]
+
+\endgroup
 
 % Debug: uncited
 %\nocite{*}
