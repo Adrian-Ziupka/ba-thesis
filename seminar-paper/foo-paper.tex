@@ -1,28 +1,27 @@
 \documentclass[german]{cgspaper} % change option to 'english' to include english logo in \copyrightspace
 
 \usepackage[ngerman]{babel} % comment out to use english in auto-generated section titles
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[ruled]{algorithm}
 \usepackage{algpseudocode}
 \usepackage{url}
 
-
-\title{Schriftliche Arbeiten im Stil eines fachwissenschaftlichen Artikels}
-\author{Jürgen Döllner und wissenschaftliche Mitarbeiter\\ Hasso-Plattner-Institut, Potsdam}
+\title{Titel der Seminararbeit}
+\author{John Doe\\ UniversitÃ¤t Potsdam, Digital Engineering FakultÃ¤t, Hasso-Plattner-Institut}
 
 % Konfiguration des Veranstaltungs-Feldes
 \subject{%
-    \textbf{Seminar Adanced Rendering Techniques},\\
-    Wintersemester 2010/2011.\\
+    \textbf{Seminar Advanced Information Visualization}\\
+    Sommersemester 2017\\
     Themenstellung und Anleitung:
-    Max Mustermann und Prof.\ Dr.\ J\"urgen D\"ollner}
+    XX und Prof.\ Dr.\ JÃ¼rgen DÃ¶llner}
 
 \begin{document}
 
 % Definition des Teasers
 \teaser{
     \includegraphics[width=0.9\textwidth]{graphics/prozess.pdf}
-    \caption{Beispiel für einen Teaser: Schritte beim Erstellen eines fachwissenschaftlichen Beitrags. Ein Teaser dient als Blickfang schon auf der ersten Seite eines Artikels.}
+    \caption{Beispiel fÃ¼r einen Teaser: Schritte beim Erstellen eines fachwissenschaftlichen Beitrags. Ein Teaser dient als Blickfang schon auf der ersten Seite eines Artikels.}
     \label{fig:prozess}
 }
 
@@ -32,7 +31,6 @@
 % Zusammenfassung
 %----------------------------------------------------------------
 \begin{abstract}
-Fachwissenschaftliche Artikel repräsentieren eine Hauptform der Kommunikation wissenschaftlicher Erkenntnis in vielen naturwissenschaftlichen und mathematischen Disziplinen. Das Verfassen fachwissenschaftlicher Beiträge ist zu einem gewissen Teil einer erlernbaren handwerklichen Fähigkeit vergleichbar. Dieser Beitrag beschreibt, wie schriftliche Arbeiten zu einem Thema in Form eines fachwissenschaftlichen Artikels abgefasst werden. Insbesondere werden der Aufbau eines Artikels, die Funktion der einzelnen Abschnitte sowie deren syntaktische und typografische Gestaltung betrachtet. Das diesem Artikel zugrunde liegende LaTeX-Template soll das Erstellen eigener schriftlicher Texte erleichtern und auf eine gemeinsame Grundlage stellen.
 \end{abstract}
 
 \copyrightspace % Erzeugt den Hinweis auf die Veranstaltung links unten
@@ -41,464 +39,33 @@ Fachwissenschaftliche Artikel repräsentieren eine Hauptform der Kommunikation wi
 % Einleitung
 %----------------------------------------------------------------
 \section{Einleitung}
-Fachwissenschaftliche Artikel repräsentieren eine Hauptform der Kommunikation wissenschaftlicher Erkenntnis in vielen naturwissenschaftlichen und mathematischen Disziplinen. Hier können zwei Hauptkategorien von wissenschaftlichen Artikeln unterschieden werden: solche die neue wissenschaftliche Beiträge beschreiben (\textit{original work}) sowie Überblicksartikel (\textit{surveys}). Fachwissenschaftliche Texte wie sie im Rahmen von Seminararbeiten entstehen beinhalten oft Aspekte beider Typen. 
 
-Das Schreiben von fachwissenschaftlichen Arbeiten ist ein Handwerk, das viel Zeit benötigt. Je öfter Sie schreiben, desto leichter wird es Ihnen fallen. Nicht alles ist immer eindeutig geregelt oder standardisiert. So sind z.~B. verschiedene Textstrukturen möglich. auf der anderen Seite existieren aber formale Regeln die einzuhalten sind, z.~B. zur Nutzung von Abbildungen oder zum Zitieren. 
+%----------------------------------------------------------------
+% Lehrstuhlkontext: 
+% Diesen Abschnitt (in der deutschen bzw. englischen Fassung) Ã¼bernehmen 
+%----------------------------------------------------------------
 
-Dieser Beitrag beschreibt, wie schriftliche Arbeiten zu einem Thema in Form eines fachwissenschaftlichen Artikels abgefasst werden können. Insbesondere werden wir der Aufbau eines Artikels, die Funktion der einzelnen Abschnitte sowie deren syntaktische und typografische Gestaltung betrachtet. 
+\section{Kontext}
+\label{sec:Kontext}
+Die Betreuung im Rahmen der SeminartÃ¤tigkeit erfolgte durch das Fachgebiet fÃ¼r Computergrafische Systeme, dessen Forschungsschwerpunkt die Prozessierung, Abbildung und interaktive Visualisierung massiver raumzeitlicher \cite{Oehlke2015,Buschmann2015,Buschmann2014,Maass2006} sowie abstrakter, hochdimensionaler Daten \cite{Limberger2017,Limberger2016,Wuerfel2015} ist. Dies beinhaltet neben neuartigen Algorithmen \cite{RichterKyprianidis2013,RichterBehrens2013,Glander2012}, Rendering-Techniken \cite{Semmo2016,Pasewaldt2014,Maass2006a,Doellner2005} und Interaktions-Metaphern \cite{Semmo2016a,Scheibel2016,Semmo2014} auch effiziente Datenstrukturen \cite{Scheibel2017,Richter2015} und Systemarchitekturen \cite{Klimke2014,Trapp2012,Klimke2010}, die anhand von real-weltlicher DatensÃ¤tze und Anwendungsszenarien  \cite{Discher2016,Trapp2015,Engel2012} evaluiert werden. 
 
-Weiterhin erläutert dieser Beitrag, wie das zugrund liegende LaTeX-Template genutzt werden kann, um eigene fachwissenschaftliche Texte effizient und mit hoher Qualität zu erstellen.
-
-Dieser Beitrag ist wie folgt aufgebaut: 
-Abschnitt~\ref{sec:VerwandteArbeiten} zählt relevante verwandte Arbeiten auf,
-Abschnitt~\ref{sec:Gliederung} beschreibt grundlegende Aspekte zur Gliederung eines Artikels. 
-Abschnitt~\ref{sec:Aufbau} erläutert wichtige Bestandteile eines Artikels.
-Abschnitt~\ref{sec:Abbildungen} geht auf Abbildungen, Tabellen und Referenzen ein.
-Abschnitt~\ref{sec:Stil} gibt Hinweise zu gutem Schreibstil.
-Abschnitt~\ref{sec:Typografisches} weist auf typografische Aspekte hin.
-Abschnitt~\ref{sec:Prozess} beleuchtet kurz die Schritte zur Erstellung einer Arbeit.
-Abschnitt~\ref{sec:Schlussfolgerungen} schließt diese Arbeit mit einer Schlussfolgerung.
+%\section{Context}
+%\label{sec:Context}
+%This course project was supervised by the Computer Graphics Systems Group whose main research interest includes the processing, mapping, and interactive visualization of massive spatio-temporal information \cite{Oehlke2015,Buschmann2015,Buschmann2014,Maass2006} and abstract high-dimensional information \cite{Limberger2017,Limberger2016,Wuerfel2015}. In particular, this comprises novel algorithms \cite{RichterKyprianidis2013,RichterBehrens2013,Glander2012}, rendering techniques \cite{Semmo2016,Pasewaldt2014,Maass2006a,Doellner2005}, and interaction metaphors \cite{Semmo2016a,Scheibel2016,Semmo2014}, as well as efficient data structures \cite{Scheibel2017,Richter2015} and system architectures \cite{Klimke2014,Trapp2012,Klimke2010} which are evaluated based on real-world data sets and application scenarios \cite{Discher2016,Trapp2015,Engel2012}.
 
 %----------------------------------------------------------------
 % Verwandte Arbeiten
 %----------------------------------------------------------------
 \section{Verwandte Arbeiten}
 \label{sec:VerwandteArbeiten}
-Über das Schreiben fachwissenschaftlicher Artikel selbst sind bereits viele Bücher, Aufsätze und wissenschaftliche Beiträge verfasst worden.
+Praesent volutpat porttitor tristique. Curabitur finibus ut magna porttitor porttitor. Mauris non ipsum eu libero faucibus sodales. Vestibulum porta a purus vel pulvinar. Sed tellus sapien, imperdiet vitae dolor sed, imperdiet blandit purus. Pellentesque magna velit, condimentum at feugiat quis, mattis nec dui. Pellentesque et massa odio. Mauris sit amet commodo arcu. Suspendisse efficitur nulla nec ligula efficitur, et molestie orci suscipit. Quisque vehicula porta leo.
 
-Ein Klassiker in diesem Bereich ist das Büchlein \glqq{} The Element of Style\grqq{}  von Strunk und White, das eine ganze Reihe von stilistischen Fallen, z.~B. zur Wortverwendungen, Zeichensetzung oder Grammatik benennt~\cite{Strunk1999}\footnote{Das Büchlein \glqq{} The Element of Style\grqq{} sollte auch in unserer Bibliothek verfügbar sein.}. Zudem werden Prinzipien des Schreibens dargestellt und Hinweise zur Form gegeben, die auch beim Verfassen deutschsprachiger Texte anwendbar sind.
-
-Teile dieses Beitrags bauen zudem auf den \glqq{} Tipps zum Schreiben von Konferenzpapieren\grqq{} entnommen, die von der Arbeitsgruppe Software Design and Quality am Karlsruhe Institute of Technolgoy zusammengetragenen wurden~\cite{SDQ2011}. Das dort beschriebene Prinzip der Pyramide zur Strukturierung solcher Texte basiert wiederum auf einem gleichlautenden Buch von Minto ~\cite {Minto2005}.
-
-Dieser Beitrag soll im Besonderen als Leitfaden für die Erstellung von Seminararbeiten dienen. Je nach Seminar und Fortschritt der Studenten im Studium unterscheiden sich diese Seminarausarbeitungen in ihrem Inhalt und Umfang. Deshalb werden in diesem Leitfaden im Besonderen grundlegende Aspekte zum Schreiben solcher Ausarbeitungen betrachtet. Dabei werden zum einen Informationen aus der verwandten Literatur genutzt, zum anderen sind eigene Erfahrungen eingeflossen. 
-
-In diesem Beitrag werden nur die für die Verwendung des Templates wichtigstens LaTeX-Befehle genannt. Umfassende Beschreibungen und auch LaTeX-Kurzübersichten finden Sie im Internet (z.~B. bei~\cite{Chang2010}). Falls Sie einen LaTeX-Editor verwenden, nutzen Sie entsprechende Handbücher.
-
-%----------------------------------------------------------------
-% Zur Gliederung
-%----------------------------------------------------------------
-\section{Zur Gliederung des Textes}
-\label{sec:Gliederung}
-
-Ein wissenschaftlicher Artikel gliedert sich in mehrere Sektionen (Abschnitte), die fortlaufend nummeriert werden. 
-
-%***
-% Untergliederung
-%***
-\subsection{Untergliederung}
-Eine Untergliederung dient vor allem der Erleichterung des Lesens -- sie soll den logischen Aufbau ihres Textes verdeutlichen. Abschnitte dieser Art heißen \emph{Untersektion} einer Sektion. 
-
-Jede Gliederungspunkt hat einen bestimmten Zweck. Daher sollte kein Gliederungspunkt leer bleiben. Das schließt ebenso ein, dass bspw. zwischen einer Sektion und einer darauffolgenden Untersektion entsprechender Inhalt gehört.
-
-Nutzen Sie für die Untergliederung Ihres Textes die entsprechenden LaTeX-Befehle \texttt{\textbackslash section}, \texttt{\textbackslash subsection} und eventuell \texttt{\textbackslash subsubsection}. Diese Überschriften werden automatisch nummeriert.  Weitere Untergliederungen sind z.~B. mit \texttt{\textbackslash paragraph} möglich; sie sollten nicht nummeriert werden.
-
-
-%***
-% Anzahl der Untergliederungen
-%***
-\subsection{Anzahl der Untergliederungen}
-Achten Sie darauf, dass es mindestens zwei, aber nicht zu viele Untergliederung gibt. Wenn eine Sektion mehr als fünf oder sechs Untersektionen hat, dann kann diese Sektion eventuell aufgebrochen werden.
-
-Die Untersektionen müssen nicht gleich lang sein, aber jede Untersektion sollte mindestens zwei Abschnitte haben, damit die Untersektion gerechtfertigt werden kann. 
-
-Tipp: Prüfen Sie die Überschriften der Sektionen und Untersektionen auf Ihre Konsistenz: 
-\begin{itemize}
-	\item Sind sie in der Satzform gleich? 
-	\item Sind sie aussagekräftig? 
-	\item Geben sie alleine schon einen ungefähren Eindruck über den Inhalt?
-\end{itemize}
-
-
-%***
-% Allgemeiner Aufbau
-%***
-\subsection{Allgemeine Gliederung}
-
-Es gibt keine allgemeingültige Antwort auf die Frage \glqq{} In welche Sektionen gliedere ich meinen Text?\grqq{}  
-
-Folgende Variante geht \textit{hierarchisch} an ein Thema heran: 
-\begin{itemize}
-    \item Einleitung
-    \item Hauptteil
-    \item Detail A
-    \item Detail B
-    \item Schlußfolgerungen
-\end{itemize}
-Der Vorteil dieser Variante ist, dass die Details übersprungen werden können, falls der Leser diese nicht wissen will. 
-
-Eine andere Variante geht \textit{linear} an ein Thema heran: 
-\begin{itemize}
-    \item Einleitung
-    \item Teil 1
-    \item Teil 2
-    \item Teil 3
-    \item Schlußfolgerungen
-\end{itemize}
-Der Vorteil dieser Variante ist, dass der Leser durch das Thema geführt wird. 
-
-Wichtig im Bereich Informatik ist, dass zu praktischen Themen auch Beispiele, Fallstudien oder Anwendungen genannt werden. Sie können entweder in den Sektionen eingestreut werden oder separat in einer Sektion stehen: 
-\begin{itemize}
-    \item Anwendungen
-    \item Beispiele
-    \item Fallstudien
-\end{itemize}
-Handelt es sich um Verfahren, Algorithmen, Datenstrukturen, Techniken oder dergleichen, wird häufig auch über die Realisierung berichtet. In diesem Fall kann eine Sektion eigens eingerichtet werden: 
-\begin{itemize}
-    \item Implementierung
-\end{itemize}
-
-Achten Sie darauf, dass Sie in einem 5-seitigen Papier nicht 15 Sektionen haben. Daumenregel: pro Sektion ungefähr eine Seite. Sektionen eines Papiers können durchaus unterschiedlichen Umfang besitzen und z.~B. länger sein, etwa dann, wenn eine Sektion Untersektionen enthält. 
-
-%----------------------------------------------------------------
-% Zum typischen Aufbau 
-%----------------------------------------------------------------
-\section{Zum typischen Aufbau}
-\label{sec:Aufbau}
-Inhalt, Anlass, Adressaten und Zielstellung eines Artikels beeinflussen dessen Struktur; deshalb kann auch nur schwer ein allgemeingültiger Aufbau eines solchen Artikels definiert werden. In diesen Abschnitt wird ein oft anzutreffender, typischer Aufbau eines fachwissenschaftlichen Artikels beschrieben; wohl wissend dass dieser so nicht immer und in Gänze für Seminararbeiten anwendbar sein wird.
-
-\subsection{Typischer Aufbau eines Beitrags}
-Ein typischer Aufbau unterteilt einen Artikel in folgende Abschnitte:
-\begin{itemize}
-    \item Zusammenfassung
-    \item Einleitung
-    \item Verwandte Arbeiten
-    \item Hauptteil/Hauptteile
-    \item Annahmen und Grenzen
-    \item Schlussfolgerungen
-    \item Referenzen
-    \item Danksagungen
-    \item Anhang
-\end{itemize}
-Funktion und Inhalt dieser Teile werden im folgenden näher erläutert.
-
-\subsection{Pyramidenprinzip}
-Die folgende Beschreibung eines möglichen Aufbaus eines Konferenzbeitrags basiert auf~\cite{SDQ2011} und folgt dem \emph{Pyramidenprinzip}. 
-
-\subsubsection{Prinzip}
-Der Aufbau eines Konferenzpapiers sollte idealerweise dem Prinzip der Pyramide folgen, der Artikel also einen hierarchischen Aufbau verfolgen. Der eigentliche Inhalt des Papiers (Motivation, Inhalt, Ergebnisse) wird in mehreren Iterationen wiedergegeben (z.B. drei), wobei der Abstraktionsgrad bei jeder Iteration sinkt. Dieses Prinzip wird bereits durch Zusammenfassung und Einleitung induziert und sollte auch im Rest des Papiers weitergeführt werden. Der Vorteil ist, dass es das Verständnis eines komplexen Sachverhalts mit vielen Details wesentlich erleichtert, weil die Struktur des Vorgestellten besser nachvollzogen werden kann. Der Leser kann die Details eines Lösungsansatzes besser einordnen, wenn er das Ziel der Argumentation bereits kennt. Auf diese Weise wird auch verhindert, dass ein Konferenzpapier einen Krimi erzählt, bei dem erst am Schluss klar wird, worauf die Autoren hinaus wollten und was das eigentliche Ergebnis der Arbeit war. 
-
-\subsubsection{Abschnitt \glqq{} Zusammenfassung\grqq{}}
-Zusammenfassung, Einleitung und Schlussfolgerungen gehören zu den meist gelesenen Abschnitten eines Konferenzpapiers und sollten daher mit besonderer Sorgfalt geschrieben werden. Idealerweise enthält eine Zusammenfassung die folgenden 5 Punkte. In einer kurzen Zusammenfassung sollte zu jedem dieser Punkte genau ein Satz geschrieben werden, mehr nicht. Prüfen Sie, ob diese Aspekte für Ihre Ausarbeitung zutreffen: 
-\begin{enumerate}
-\item Eingrenzung des Forschungsbereichs: In welchem Themengebiet ist die Arbeit angesiedelt? Wie ist das Verhältnis zum Thema der Konferenz/des Journals?
-\item Beschreibung des Problems, das in dieser Arbeit gelöst werden soll: Was ist das Problem und warum ist es wichtig dies zu lösen?
-\item Mängel an existierenden Arbeiten bzgl. des Problems: Warum ist es ein Problem, obwohl sich schon andere mit dem gleichen Thema beschäftigt haben?
- \item Eigener Lösungsansatz: Welcher Ansatz wurde in dieser Arbeit verwendet, um das Problem zu lösen? Was ist der Beitrag dieses Artikels?
-\item Art der Validierung und Ergebnisse: Wie wurde nachgewiesen, dass die Arbeit die versprochenen Verbesserung wirklich vollbringt (Fallstudie, Experiment, o.ä.)? Was waren die Ergebnisse der Validierung (idealerweise Prozentsatz der Verbesserung)? 
-\end{enumerate}
-
-\subsubsection{Abschnitt \glqq{} Einleitung\grqq{}}
-Die Einleitung dient dazu, den Leser an die eigene Arbeit heranzuführen. Sie sollte sich von allgemeinen Aussagen zum eigentlichen Thema heranarbeiten (hineinzoomen). Die Einleitung sollte so geschrieben werden, dass jeder Informatiker (auch aus anderen Teilbereichen) verstehen kann wozu die Arbeit dient. 
-
-Machen Sie den Leser also mit der Materie vertraut, klären Sie den Kontext, die Bezüge zu anderen, vielleicht ihm besser vertrauten Gebieten, damit Sie und Ihr Text zugeordnet werden können. Die Einleitung enthält auch die Motivation: Die ersten Zeilen der Einleitung entscheiden über das Weiterlesen. Finden Sie Bezüge zum aktuellen Geschehen, zur Historie, zu einer Konferenz, einer Äußerung oder einer anderen Referenz, die als Startpunkt für den Leser dienen kann. 
-
-Idealerweise folgt die Einleitung dem gleichen Aufbau (5 Punkte) wie der Abstract, jedoch wird jetzt für jeden der Punkte ein ganzer Abschnitt geschrieben. Der vorletzte Absatz der Einleitung (also nach Abhandlung der 5 Punkte) sollte mit \glqq{} Der Beitrag dieser Arbeit ist ...\grqq{} beginnen und die eigentlichen neuen Beiträge der Arbeit (meist zwei oder drei Punkte) nochmals deutlich herausstellen. Das erleichtert es Gutachtern, im Wust von Motivation, verwandten Arbeiten, Grundlagen usw. das Inkrement bzw. den wissenschaftlichen Beitrag der Arbeit zu erfassen. Der letzte Abschnitt der Einleitung sollte einen Überblick über das Papier geben und jeden Abschnitt des Papiers mit einem Satz beschreiben. 
-
-Die Einführung besteht aus mehreren Paragraphen, aber hat meist keine weitere Subsektionen. Einen neuen Paragraph, mit Ausnahme des ersten, rücken Sie ein, damit der Anfang des Paragraphen visuell leichter zu finden ist. Im Template gibt es Vorlagen hierzu, aber prüfen Sie selbst, ob diese sinnvoll eingestellt sind. 
-
-In der Einleitung können Sie zudem Abkürzungen und technische Begriffe einführen sowie gegebenenfalls auf Besonderheiten bei der Notation hinweisen. 
-
-\subsubsection{Abschnitt \glqq{} Verwandte Arbeiten\grqq{}}
-Eine Auflistung verwandter Arbeiten ist essentiell für jeden wissenschaftlichen Artikel. Überlegen Sie, ob dieser Abschnitt auch für Ihre Ausarbeitung wichtig ist. 
-
-\paragraph*{Position:} Bereits in der Einleitung sollte auf die Unzulänglichkeiten verwandter Arbeiten eingegangen werden, um die eigene Arbeit zu motivieren. In kürzeren Papieren (ca. 8 Seiten) kann man die verwandten Arbeiten schon komplett in der Einleitung abhandeln um Platz zu sparen, in längeren Papieren (ab ca. 15 Seiten) sollte jedoch ein eigener Abschnitt \emph{Verwandte Arbeiten} geschrieben werden. Dieser eigene Abschnitt kann entweder vor den eigentlichen Beitrag gestellt werden, um die Verbesserungen der Arbeit gegenüber anderen Arbeiten zu betonen. Alternativ kann dieser Abschnitt auch erst am Ende eines Papier vor den Schlussfolgerungen auftauchen (z.B. wenn man einen recht neuen Ansatz entwickelt hat, der sich nur schwierig mit anderen Arbeiten vergleichen lässt).
-\paragraph*{Inhalt:} In den Abschnitt \emph{Verwandte Arbeiten} gehört idealerweise zunächst ein bekannter Überblicks-Artikel zum Themengebiet bzw. ein Standard-referenziertes Buch. Damit können sich interessierte Forscher einen eigenen Überblick zu verwandten Arbeiten in diesem Themengebiet schaffen. Es folgt die Auflistung ähnlicher bzw. verwandter Arbeiten. Diese Arbeiten sollten dabei nicht einfach beschrieben werden, sondern immer in Bezug zur eigenen Arbeit gesetzt werden. Idealerweise sollten die Kernverbesserungen der eigenen Arbeit im Verhältnis zu jeder verwandten Arbeit hier herausgearbeitet werden. Auf keinen Fall sollten verwandte Arbeiten unreflektiert aufgelistet werden.
-
-\subsubsection{Abschnitt \glqq{} Annahmen und Grenzen\grqq{}}
-Es hat sich als positiv herausgestellt die Annahmen und Grenzen des eigenen Lösungsansatzes explizit in einem eigenen Abschnitt zu disktuieren. Dies nimmt a) den kritischen Gutachtern, die nach Unzulänglichkeiten des Ansatzes suchen, den Wind aus den Segeln und b) wird die Aufrichtigkeit gegenüber den eigenen Schwächen von den meisten Gutachtern eher positiv denn negativ beurteilt und demonstriert eine gewisse Selbstsicherheit des Autors.
-
-\subsubsection{Abschnitt \glqq{} Schlussfolgerungen\grqq{}}
-Die Schlussfolgerungen beenden den Artikel und erhöhen den Abstraktionsgrad der Beschreibung wieder (hinauszoomen), genauso wie die Einleitung diesen gesenkt hat (hineinzoomen). In den \glqq{} Schlussfolgerungen\grqq{}, im \glqq{} Ausblick\grqq{} oder in der \glqq{} Zusammenfassung\grqq{} kann der Inhalt noch einmal komprimiert genannt werden oder eine Diskussion des Vorgestellten stattfinden. Wichtig: Zusammenfassung heißt, dass bereits Gesagtes wiederholt wird; dies mag wichtig sein, um den Leser zu erinnern. In den Schlussfolgerungen muss etwas stehen, was bislang nicht gesagt wurde: Folgerungen und Schlüsse, die sich aus dem Gesagte ergeben. Hier muss über den Tellerrand hinaus geblickt werden. Ein Ausblick hingegen betont zukünftige oder gerade laufenden Entwicklungen. 
-
- Idealerweise bestehen die  Schlussfolgerungen also aus folgenden 3 Punkte, für die jeweils ein Abschnitt spendiert werden sollte: 
-\begin{itemize}
-\item  Zusammenfassung: Was wurde in dieser Arbeit gemacht? Was waren die Schlüsselergebnisse? Diesmal jedoch zusammengefasst nochmals für einen Leser, der die vorherigen Seiten mit allen Details bereits gelesen hat.
-\item Adressaten der Verbesserung: Wem nützen die Verbesserungen/Beiträge der Arbeit? Inwieweit wird die Software-Technik durch die Arbeit verbessert?
-\item Aufbauende/Zukünftige Arbeiten: Welche nächsten Schritte sind geplant (erst kurzfristige, dann längerfristige)? Welche möglichen Lösungsansätze für noch bestehende Probleme sind denkbar? Wie könnten Folgearbeiten aussehen? 
-\end{itemize}
-
-
-% ***
-% Danksagung + Anhänge
-% ***
-\subsection{Weitere Abschnitte}
-Neben den aufgeführten Abschnitten können Danksagungen und Anhänge weitere wichtige Abschnitte eines Artikels sein.
-
-\subsubsection{Abschnitt \glqq{} Danksagung\grqq{}}
-In manchen Fällen, z. B. falls eine wissenschaftliche Arbeit durch Fördergeld unterstützt wurde oder falls weitere Personen erwähnenswerten Anteil an der dargestellten Arbeit hatten, kann es erforderlich oder auch nur sinnvoll sein, dies/diese in einem Abschnitt \glqq{} Danksagungen \grqq{} zu erwähnen. 
-
-\subsubsection{Abschnitt \glqq{} Anhang\grqq{}}
-Im Anhang steht zusätzliches Material, das nicht geeignet im Text integriert werden kann, aber trotzdem dem Leser mitgeteilt, wenigstens zur Verfügung gestellt werden soll. Dazu zählen: 
-\begin{itemize}
-	\item Tabellen und Zahlenmaterial
-	\item Algorithmen und Programmierschnittstellen
-	\item Ausführliche Beispiele
-	\item Großformatige Abbildungen
-	\item Mathematische Beweise
-\end{itemize}
-
-Der Anhang kann untergliedert werden in
-\begin{itemize}
-	\item Anhang A
-	\item Anhang B
-	\item ...
-\end{itemize}
-
-Achten Sie darauf, dass der Anhang entweder noch auf die letzte Seite des Papiers vollständig passt oder auf einer neuen Seite anfängt. Anmerkung: Einen Seitenumbruch können Sie mit dem Befehl \texttt{\textbackslash newpage} erzwingen.
-
-
-%----------------------------------------------------------------
-% Zu Abbildungen, Tabellen und Referenzen
-%----------------------------------------------------------------
-\section{Zu Abbildungen, Tabellen und Referenzen}
-\label{sec:Abbildungen}
-
-Abbildung, Tabellen und Referenzen sind wichtige Bestandteile wissenschaftlicher Arbeiten. Wie diese sinnvoll und für den Leser nutzbringend in den Text eingebracht werden können, erläutern die folgenden Abschnitte.
-
-% ***
-% Abbildungen
-% ***
-\subsection{Abbildungen}
-\begin{figure}[]
-    \centering
-    \includegraphics[width=0.9\columnwidth]{graphics/abb2}
-    \caption{\label{fig:polygone1}Rendering-Pipeline eines nichtphotorealistischen Renderingsystems.}
-\end{figure}
-
-Abbildungen sind (informell betrachtet) die Elemente, die darüber entscheiden, ob ein Leser freiwillig Interesse an Ihrem Text findet oder nicht. Abbildungen sollen den gesamten Text auch ohne den Text zu lesen in groben Zügen vermitteln können. Machen Sie die Probe: Was ist, wenn jemand nur die Sammlung der Abbildungen sähe, welchen Vortragstitel würde er/sie vermuten können? Jede Abbildung muss im Text referenziert sein, jede Abbildung sollte vor der ersten Referenzierung stehen, im optimalen Fall auf der gleichen Seite. Positionieren Sie Abbildung entweder ganz oben oder ganz unten; dadurch wird das Layout einfacher.
-
-Bei der Verwendung von LaTeX wird Ihnen (im Gegensatz zu einigen Office-Programmen) viel Arbeit beim Hantieren mit Abbildungen abgenommen: Zum Beispiel erfolgen Positionierung, fortlaufende Nummerierung und die Textformatierung automatisch. Die Abbildungen können sich über nur eine Spalte (Abbildung \ref{fig:polygone1}) oder zwei Spalten (Abbildung~\ref{fig:polygone2})erstrecken.
-
-Zu jeder Abbildung soll eine \emph{Unterschrift} gesetzt werden (per Befehl \texttt{\textbackslash caption}). Diese soll die Abbildung beschreiben; falls die Abbildung aus mehreren Teilen besteht, sollen alle Teile beschrieben werden. 
-
-Falls möglich sollten Sie \emph{Vektorgrafiken} nutzen, denn diese ergeben im digitalen Dokument und im Druck ein saubereres Bild. 
-
-Eine ausgezeichnete Abbildung ist der sogenannte \emph{Teaser}. Er dient als Blickfang schon auf der ersten Seite eines Artikels; seine Hauptaufgabe ist es, Interesse für das Lesen des Textes zu wecken. Dieses Dokument enthält mit Abbildung~\ref{fig:prozess} einen solchen Teaser. -- Das LaTeX-Template unterstützt das Setzten eines Teasers mit Hilfe der Befehle \texttt{\textbackslash teaser} (in den eine Abbildung eingefügt werden kann).
-
-
-\begin{figure*}[]
-    \centering
-    \includegraphics[width=0.7\textwidth]{graphics/abb2}
-    \caption{Polygone (Links), ihre Zerlegung (Mitte) und skizzenhafte Darstellung (Rechts).}
-    \label{fig:polygone2}
-\end{figure*}
-
-% ***
-% Tabellen
-% ***
-\subsection{Tabellen}
-Tabellen erhalten ihre eigene Nummerierung. Sie tragen eine Überschrift (alternativ: Unterschrift). Auch Tabellen müssen im Text referenziert werden (z.~B. Tabelle~\ref{tab:benamsung}).
-
-Die Tabellenerstellung mit LaTeX ist teilweise ein wenig hakelig. Unter Umständen kann es notwendig werden, dass Sie zusätzliche LaTeX-Pakete einbinden, z.~B. um überlange Tabellen zu erzeugen.
-
-% ***
-% Referenzen
-% ***
-\subsection{Referenzen}
-Referenzen bezeichnen externe Dokumente, Veröffentlichungen oder andere Unterlagen, die Sie heranziehen, um Aussagen zu belegen, zu vertiefen oder um den Leser auf andere Darstellungen zu verweisen. Wenn Sie Material Dritter nutzen, müssen Sie dies durch Referenzen kennzeichnen. 
-   
-Im Text können Sie \emph{Zitate} verwenden, besonders dann, wenn eine Aussage gut formuliert wurde und Sie es nicht besser wiedergeben können. Alle genutzten Zitate müssen durch Angabe der Quelle belegt werden. Kurze Zitate können in Anführungszeichen gesetzt in den laufenden Text integriert werden. Längere Zitate werden unter Verwendung der \texttt{quote}-Umgebung eingerückt. Fiktives Beispiel: Müller (1987, S. 123) merkt an, dass \glqq{} an important aspect of drawings is the underlying color scheme.\grqq{} Geben Sie bei wörtlichen Zitaten die Seitenzahl an. 
-
-Im Text können Sie schlicht mit Hilfe einer Nummer in eckigen Klammern auf eine Referenz verweisen. Das ist einerseits kompakt und üblich, andererseits aber nicht leserfreundlich. Beispiel: Ein Ansatz zur Visualisierung wurde in \cite{Goldfeather1989} vorgestellt.
-
-Im Text können Sie den Autor auch in Klammern zusammen mit der Jahreszahl schreiben. Beispiel: Ein Ansatz zur Visualisierung wurde von Goldfeather et al.~\shortcite{Goldfeather1989} vorgestellt. Das ist leserfreundlicher, weil der Autor bzw. die Autoren genannt und damit direkt bekannt sind.
-
-Bei Abbildungen und Tabellen, die übernommen werden, schreiben Sie \glqq{}(Quelle: \cite{Goldfeather1989})\grqq{} oder, falls Sie etwas adaptiert haben, \glqq{}(Nach: \cite{Goldfeather1989})\grqq{}. 
-
-Versuchen Sie \emph{Primärquellen} zu finden und zu benennen. Falls dies nicht möglich ist, referenzieren Sie die Primärquelle und die Sekundärquelle (z.B. [1] nach [2]). Bei \emph{Internetquellen} geben Sie die URL an und in Klammern das Datum des Zugriffs.
-
-%----------------------------------------------------------------
-% Zum Stil
-%----------------------------------------------------------------
-\section{Zum Stil}
-\label{sec:Stil}
-
-%***
-% Hinweise zum Schreibstil
-%***
-Die folgenden Abschnitte enthalten einige weitere Anmerkungen, unter anderem zum Schreibstil.
-
-% Abkürzungen
-\paragraph{Abkürzungen/Akronyme:}
-Wenn Sie spezielle Abkürzungen oder Akronyme verwenden, führen Sie diese immer ein. Führen Sie Abkürzungen/Akronyme aber nur ein, wenn diese im weiteren Text auch wirklich genutzt werden. 
-
-% Hervorhebungen
-\paragraph{Hervorhebungen:}
-Manchmal soll der Leser auf ein gerade eingeführtes Wort hingewiesen werden; diesen Hinweis können Sie hervorheben. Gebrauchen Sie dieses Mittel nicht inflationär. -- Mit LaTeX können Sie Wörter mit dem Befehl \texttt{\textbackslash emph} hervorheben.
-
-% Aufzählungen
-\paragraph{Aufzählungen und Nummerierungen:}
-Wenn Sie Dinge aufzählen, dann hilft es dem Leser, wenn Sie Aufzählungen nutzen. Aufzählungen werden klassisch mit Spiegelstrichen, aber auch mit anderen Symbolen eingeleitet. -- Nutzen Sie die LaTeX-Umgebungen \texttt{itemize} für Aufzählungen und \texttt{enumerate} für Nummerierungen.
-
-% Satzzeichen
-\paragraph{Satzzeichen:}
-Neben Punkt und Komma kennt das Schrift-Deutsch eine Reihe weiterer Satzzeichen, z.B. Semikolon, Doppelpunkte, Gedankenstriche. Diese können verwendet werden. Deutsche \glqq{} Anführungsteichen\grqq{} sind im LaTeX-Paket \texttt{ngerman} enthalten. Sie können z.~B. mit \texttt{\textbackslash glqq} (unten) und \texttt{\textbackslash grqq} (oben) gesetzt werden. Englische Anführungszeichen können mit \texttt{``} (öffnend) und zwei einfachen Apostrophs (schließend) gesetzt werden. 
-
-% Beispiele
-\paragraph{Verwendung von Beispielen:}
-Beispiele können helfen komplizierte oder abstrakte Sachverhalt zu veranschaulichen und verständlicher zu machen. Sie können auch gezielt zur Auflockerung eines Textes verwendet werden. Ebenso sollten Beispiele hinsichtlich Inhalt und Stil des Beitrags sowie hinsichtlich ihrer Häufigkeit angemessen eingesetzt werden. Beispiele sollen einen Text zumeist verständlicher werden lassen -- statt komplizierter und ausschweifender Beispiele sollten deshalb eingängige, verständliche und anschauliche Beispiele angeführt werden. 
-
-%Kurze Sätze
-\paragraph{Satzlänge/Formulierungen:}
-Verwenden Sie eher kurze Sätze. Vermeiden Sie verschachtelte Satzkonstruktionen. Vermeiden Sie Füllwörter und Floskeln.
-
-% Sprachkonstrukte
-\paragraph{Besondere Sprachkonstrukte:}
-Achten Sie auf Korrektheit und Konsistenz bei verwendeten Sprachkonstrukten. Beispiele sind:
-\begin{itemize}
-\item Zu jedem \emph{zuerst} gehört ein \emph{dann} oder \emph{danach}.
-\item Zu jedem \emph{erstens} gehört wenigstens ein \emph{zweitens}.
-\item Zu jedem \emph{auf der einen Seite} gehört ein \emph{auf der anderen Seite}.
-\end{itemize}
-
-Weitere Hinweise finden Sie in~\cite{SDQ2011}.
-
-% ***
-% Englisch
-% ***
-\subsection{Schreiben in englischer Sprache}
-
-Falls im Rahmen der Veranstaltung möglich, können Sie Ihre Ausarbeitung auch in englischer Sprache verfassen. 
-Falls sie in englischer Sprache schreiben, gehen Sie bitte besonders sorgfältig vor bei Erstellung des Textes. Versuchen Sie häufige Fehler, z.B. zur Verwendung von Kommas oder zur korrekten Nutzung der Relativpronomen \textit{that} und \textit{which}, zu vermeiden. Hier sei nochmals auf das Büchlein von Strunk und White verwiesen~\cite{Strunk1999}. 
-
-Um das LaTeX-Template für das Englische anzupassen, ändern Sie bitte bei der Einbindung des Pakets \texttt{babel} den angegebenen Parameter: \texttt{\textbackslash usepackage[english]\{babel\}}
-
-\begin{table}[b]
-    \centering
-    \caption{Überschriften in Deutsch und Englisch.}
-    \label{tab:benamsung}
-    \begin{tabular}{ll}
-        Deutsche Überschrift & Englische Überschrift  \\
-        \hline
-        Zusammenfassung & Abstract\\
-        Einleitung & Introduction\\
-        Verwandte Arbeiten & Related Work\\
-        Schlussfolgerungen & Conclusions\\
-        Ausblick & Outlook\\
-        Danksagungen & Acknowledgments\\
-        Literatur & References
-    \end{tabular}
-\end{table}
-
-% ***
-% Autoren
-% ***
-\subsection{Autorenschaft}
-Es wird angenommen, dass der erstgenannte Autor eines fachwissenschaftlichen Artikels den Großteil der Arbeit bei der Erstellung des Textes geleistet hat. Im Gegensatz zu anderen Fachdisziplinen wird in der Informatik zudem angenommen, dass jeder der aufgeführten Co-Autoren einen signifikanten Beitrag zur Erstellung des Textes geleistet hat; ein alleiniges Korrekturlesen des Textes reicht hier üblicherweise nicht aus für einen Platz in der Autorenliste. 
-
-%----------------------------------------------------------------
-% Typografisches
-%----------------------------------------------------------------
-\section{Typografisches}
-\label{sec:Typografisches}
-
-In diesem Abschnitt werden Hinweise zum Satz des Textes gegeben. 
-
-%***
-% Schriftfamilien
-%***
-\subsection{Schriftfamilien}
-Schreiben Sie den Fließtext in Serifenschrift, z.B.\ Times. Schreiben Sie Strukturtext in serifenloser Schrift, damit der Unterschied visuell deutlich wird. Daumenregel: Überschriften, und Titel in Arial, Rest in Times. Das vorliegende LaTeX-Template nimmt Ihnen das allerdings ab.
-
-%***
-% Formeln
-%***
-\subsection{Formeln}
-Mathematische Symbole, auch Variablennamen, schreiben Sie kursiv, etwa wenn $x$ ein Parameter der Funktion $f$ ist. Formeln bitte mit dem Formeleditor erstellen:
-\[
-    I_A = \big\{ P, R_P, A_P, O \big\}
-\]
-
-Formeln sollen zentriert werden, falls sie separat in einem Paragraph stehen, ansonsten integrieren Sie Formeln in den laufenden Text.
-\[
-    \forall o \in O \quad I_C \longleftarrow R_{P_o}\big( P_o, A_{P_o} \big)
-\]
-
-%***
-% Pseudo-Code
-%***
-\subsection{Pseudo-Code}
-Algorithmen und Verfahren müssen mitunter skizziert werden, damit Sie besser verstanden und/oder formalisiert werden können. Schreiben Sie hierfür Pseudo-Code; es existiert kein Sprachstandard für Pseudo-Code, auch gibt es keine Pseudo-Code-Sprache. Orientieren Sie sich im Zweifelsfall an der Syntax von Java oder C++, vermeiden Sie aber unnötige Details. 
-
-Sie können auch mathematische Schreibweise einfließen lassen, diese sind sicherlich in einer Implementierung nicht unbedingt einfach umzusetzen, aber es geht um das Verständnis, nicht um die Programmierung. 
-
-Listing~\ref{code:rendering} zeigt ein Beispiel für Pseudo-Code.
-
-\begin{algorithm}[t]
-    \caption{Beispiel für Pseudo-Code: Rendern von opaken und transparenten Objekten.}
-    \label{code:rendering}
-    \begin{algorithmic}[1]
-        \Procedure{render}{$I_A$}
-            \ForAll{ $l \in \{\mathrm{opaque}, \mathrm{transparent}\}$ }
-                \ForAll{ $o \in O$ }
-                \State $P_o \leftarrow \big\{ p \in \mathrm{visible}(o) \;|\; p \in L_l(I_A) \big\}$
-                \State $R_o \leftarrow R_p[o]$
-                \State $A_o \leftarrow A_p[o]$
-                \State $I_c \leftarrow R_o(P_o, A_o)$
-                \EndFor
-            \EndFor
-        \EndProcedure
-    \end{algorithmic}
-\end{algorithm}
-
-\subsection{Layout-Details}
-Das Layout wird bei Veröffentlichungen meist vorgegeben. In diesem Seminar ist es eben durch ein LaTeX-Template definiert. Beachten Sie zusätzlich folgendes:
-\begin{itemize}
-    \item Überlange Zeilen können eventuell mit dem LaTeX-Befehl \texttt{\textbackslash sloppy} verhindert werden.
-    \item Überschriften für Danksagungen und Anhänge sollen nicht nummeriert werden. Dazu können wird der entsprechende LaTeX-Befehl mit einem Sternchen (*) verwendet, z.~B. \texttt{\textbackslash section*}.
-    %\item Die letzte Seite (ohne Anhang) soll in der Höhe links- und rechtsspaltig ausgeglichen sein.
-\end{itemize}
-
-%----------------------------------------------------------------
-% Zum Prozess
-%----------------------------------------------------------------
-\section{Schreiben als Prozess}
-\label{sec:Prozess}
-
-Das Schreiben eines Beitrags beinhaltet unter anderem die folgenden Schritte:
-\begin{enumerate}
-\item Literatur-Recherche: Machen Sie sich ein Bild vom Themenfeld. Suchen Sie verwandte Arbeiten. Identifizieren Sie Grundprobleme. Welche Lösungen sind in der Fachliteratur beschrieben?
-\item Entwurf einer Zusammenfassung: Fassen Sie ihr Vorhaben durch den Entwurf einer Zusammenfassung in Worte. Dies hilft auf die wesentlichen Aspekte zu fokussieren.  
-\item Entwurf einer Gliederung: Entwerfen Sie eine Gliederung. Berücksichtigen Sie dabei die oben gegebenen Hinweise zur möglichen Strukturierung des Textes. Konzentrieren sie sich zunächst auf die Überschriften der Abschnitte und Unterabschnitte. Ergänzen Sie dann stichpunktartig mit geplanten Inhalten. Notieren Sie für jeden geplanten Abschnitt den zu erwartenden Seitenumfang und überprüfen Sie diese Planung.
-\item Ausformulierung: Formulieren Sie den Text entsprechend der Stichpunkte aus und betten Sie Abbildungen, Tabellen, usw. ein. 
-\item Prüfung des Textes: Kontrollieren Sie ihr Papier hinsichtlich Rechtschreibung und formaler Aspekte wie z.~B. Vollständigkeit und Konsistenz der Referenzen.
-\item Korrekturlesen: Drucken Sie Ihren Beitrag auch aus und lesen Sie diesen laut; viele Fehler und komplizierte Formulierungen lassen sich so aufdecken und beseitigen. Wenn Sie möchten, nutzen Sie spezielle Notationen um Fehler zu markieren (z.~B.~\cite{Roberti2010}). Bitten Sie unbedingt auch Dritte ihre Arbeit zu lesen.
-\end{enumerate}
-Das Schreiben eines Artikels benötigt Zeit; zwei Wochen sollten Sie mindestens einplanen. 
-
-%----------------------------------------------------------------
-% Schlussfolgerungen
-%----------------------------------------------------------------
-\section{Schlussfolgerungen}
-\label{sec:Schlussfolgerungen}
-Das Schreiben von fachwissenschaftlichen Arbeiten ist ein Handwerk, das viel Zeit benötigt. Je öfters Sie schreiben, desto leichter wird es Ihnen fallen. Nicht alles ist immer eindeutig geregelt oder standardisiert. Dieser Artikel gibt Hinweise zum Schreiben von fachwissenschaftlichen Artikeln. Dabei werden sowohl der mögliche Aufbau eines solchen Artikels, als auch die inhaltliche Ausgestaltung der einzelnen Abschnitte betrachtet. Weiterhin werden Hinweise zu Abbildungen, Tabellen, Referenzen und Zitierweise und zu verschiedenen stilistischen und typografischen Aspekten gegeben. 
-
-Dieser Artikel soll dem Leser als Leitfaden dienen für die Erstellung eigener fachwissenschaftlicher Beiträge, z.~B. Seminararbeiten. Gemeinsam mit dem auch diesem Artikel zugrunde liegenden LaTeX-Template soll der Leser in die Lage versetzt werden eine solche Arbeit strukturiert zu planen und effektiv und effizient umzusetzen. 
+Donec sodales, justo ac fermentum lacinia, nisl nunc faucibus leo, quis rutrum tortor enim sit amet metus. Sed quis metus convallis, ultrices eros at, porta nisi. Aliquam erat volutpat. Phasellus faucibus dignissim diam, id porta lectus sagittis eget. In convallis rutrum turpis, sed viverra nisi laoreet cursus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc id nisi ut sem ultricies dapibus. Sed ut quam non ex fermentum sodales. Nulla quam lorem, lacinia ac volutpat rhoncus, rhoncus a massa. Nunc posuere dapibus metus, vel maximus velit. Pellentesque sed lectus tristique, ornare lorem ut, hendrerit velit. Etiam fermentum ultricies nunc non volutpat. Vivamus fringilla vitae lacus non laoreet. Duis sit amet augue non mi luctus dignissim. In in tempor elit, vitae venenatis lectus. Aliquam erat volutpat.
 
 %----------------------------------------------------------------
 % Quellenverzeichnis
 %----------------------------------------------------------------
-%\nocite{NVidia2002}
-%\nocite{Wynn2002}
 \bibliographystyle{acmsiggraph}
 \bibliography{foo-paper}
-
-%----------------------------------------------------------------
-% Anhang
-%----------------------------------------------------------------
-\appendix
-\section*{Anhang}
-\subsubsection*{Checkliste zum Korrekturlesen}
-Die folgende Aufzählung kann als Checkliste bei der Überprüfung einer eigenen Arbeit dienen. Sie basiert auf den im Artikel genannten Hinweisen. Die mit Sternchen (*) gekennzeichneten Punkte sollten bei Verwendung von LaTeX automatisch berücksichtigt worden sein.
-\begin{itemize}
-\item Passt die Zusammenfassung am Anfang des Artikels noch zu dessen Inhalt?
-\item Sind die gewählten Überschriften aussagekräftig und konsistent?
-\item Sind alle verwendeten Abkürzungen/Akronyme eingeführt?
-\item Sind nur Abkürzungen/Akronyme eingeführt, die auch mehrfach genutzt werden?
-\item Sind alle im Artikel enthaltenen Abbildungen und Tabellen sowie aller Pseudo-Code auch im Text referenziert?
-\item Sind zu allen Abbildungen und Tabellen sowie zu allem Pseudo-Code Unterschriften bzw. Überschriften angegeben?
-\item Enthält der Beitrag tatsächlich alle im Text referenzierten Abbildungen und Tabellen sowie allen Pseudo-Code? (*)
-\item Sind die Referenzen vollständig und konsistent?
-\end{itemize}
 
 \end{document}
