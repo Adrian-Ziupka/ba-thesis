@@ -1,24 +1,8 @@
-%\documentclass[ngerman,oneside]{cgsthesis}
-\documentclass{cgsthesis}
-
-\usepackage[utf8]{inputenc}
+\documentclass[bsc,itse]{cgsthesis}
 
 % Configure Biblatex
 
-\usepackage[defernumbers=true,natbib=true,backend=biber,style=numeric,maxcitenames=2,maxbibnames=50]{biblatex}
-\DeclareBibliographyCategory{cited}
-\DeclareBibliographyCategory{supplementary}
-\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
-\newcommand{\citesupplementary}[1]{\nocite{#1}\addtocategory{supplementary}{#1}}
-\DefineBibliographyStrings{ngerman}{
-  andothers = {\emph{et~al\adddot}}
-}
-\DefineBibliographyStrings{english}{
-  andothers = {\emph{et~al\adddot}}
-}
-% we don't care about these
-\AtEveryBibitem{\clearlist{location}}
-\AtEveryBibitem{\clearfield{address}}
+\usepackage{cgsbibentries}
 \addbibresource{foo-thesis.bib}
 
 % Code listings
@@ -34,58 +18,24 @@
 
 % Title page
 
-\logo{graphics/logo_black}
-
 \title{Titel der Arbeit}
 %\subtitle{Untertitel} % z.B. englischer Titel bei Bachelorarbeit
 
-\subject{%
-    Bachelorarbeit\\
-    zur Erlangung des akademischen Grades\\
-    "Bachelor of Science"\\
-    (B.Sc.)\\
-    im Studiengang IT-Systems Engineering\\
-    %
-    %Masterarbeit\\
-    %zur Erlangung des akademischen Grades\\
-    %"Master of Science"\\
-    %(M.Sc.)\\
-    %Studiengang IT-Systems Engineering\\
-    %
-    %Dissertation\\
-    %zur Erlangung des akademischen Grades\\
-    %"doctor rerum naturalium"\\
-    %(Dr.\ rer.\ nat.)\\
-    %in der Wissenschaftsdisziplin Informatik
-    %
-    %Dissertation\\
-    %zur Erlangung des akademischen Grades\\
-    %Doktor der Ingenieurwissenschaften
-    %(Dr.-Ing.)\\
-    %in der Wissenschaftsdisziplin Informatik
-    %
-    \vspace{1em}
-    Hasso-Plattner-Institut, Digital Engineering Fakult\"at\\
-    Universit\"at Potsdam\\
-    \vfill
-    vorgelegt von}
-
 \author{Foo Bar}
 
-%\publishers{%
-%    Aufgabenstellung und Anleitung:\\
-%    Prof.\ Dr.\ J\"urgen D\"ollner\\
-%    Max Mustermann}
+\publishers{%
+    Prof.\ Dr.\ J\"urgen D\"ollner\\
+    Max Mustermann}
 
 \place{Potsdam}
-\date{\begin{otherlanguage}{ngerman} \today \end{otherlanguage}}
+\date{\today}
 
 
 \begin{document}
 
-\selectlanguage{ngerman}
-
 \frontmatter
+
+\selectlanguage{english}
 
 \maketitle
 

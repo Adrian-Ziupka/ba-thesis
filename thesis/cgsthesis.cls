@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cgsthesis}[10/10/2012 CGS Thesis class by J.E. Kyprianidis]
+\ProvidesClass{cgsthesis}[10/10/2012 CGS Thesis class by J.E. Kyprianidis and 2017 by Sören Discher and Willy Scheibel]
 
 \newif\ifcgs@tight
 \newif\ifcgs@afoursmall
@@ -13,6 +13,17 @@
 \newif\ifcgs@timesNR
 \newif\ifcgs@libertine
 
+% Degrees
+\newif\ifcgs@bsc
+\newif\ifcgs@msc
+\newif\ifcgs@drrernat
+\newif\ifcgs@dring
+
+% Programs
+\newif\ifcgs@computerscience
+\newif\ifcgs@itse
+\newif\ifcgs@dataengineering
+
 \DeclareOption{tight}{\cgs@tighttrue}
 \DeclareOption{a4small}{\cgs@afoursmalltrue}
 \DeclareOption{basic}{\cgs@basictrue}
@@ -24,6 +35,18 @@
 \DeclareOption{libertine}{\cgs@libertinetrue}
 \DeclareOption{times}{\cgs@timestrue}
 \DeclareOption{timesNR}{\cgs@timesNRtrue}
+
+% Degrees
+\DeclareOption{bsc}{\cgs@bsctrue}
+\DeclareOption{msc}{\cgs@msctrue}
+\DeclareOption{drrernat}{\cgs@drrernattrue}
+\DeclareOption{dring}{\cgs@dringtrue}
+
+% Programs
+\DeclareOption{computerscience}{\cgs@computersciencetrue}
+\DeclareOption{itse}{\cgs@itsetrue}
+\DeclareOption{dataengineering}{\cgs@dataengineering}
+
 \ProcessOptions\relax
 
 \IfFileExists{cgsthesis.cfg}{\input{cgsthesis.cfg}}
@@ -49,11 +72,13 @@
     \newcommand{\cgs@width}{147mm}
 \fi
 
+\RequirePackage[utf8]{inputenc}
 \RequirePackage{scrhack}
 \RequirePackage{scrpage2}
 \RequirePackage[ngerman,english]{babel}
 \RequirePackage{amsmath,amsthm}
 \RequirePackage{printlen}
+\RequirePackage{translations}
 
 \newcommand{\cgs@dispfamily}{\sffamily}
 
@@ -226,26 +251,110 @@
   {\raggedsection\normalfont\sectfont\nobreak\size@paragraph}%
 }
 
-\gdef\@logo{}
-\def\logo#1{\gdef\@logo{#1}}
+\DeclareTranslationFallback {cgs@logo}{graphics/logo_black}
+\DeclareTranslation{ngerman}{cgs@logo}{graphics/logo_black}
+\DeclareTranslation{english}{cgs@logo}{graphics/logo_black}
+\gdef\@logo{\GetTranslation{cgs@logo}}
 
-\gdef\@date{%
-    \ifcase\month
-    \or Januar%
-    \or Februar%
-    \or M{\"a}rz%
-    \or April%
-    \or Mai%
-    \or Juni%
-    \or Juli%
-    \or August%
-    \or September%
-    \or Oktober%
-    \or November%
-    \or Dezember%
-    \fi\space\number\year}
+\DeclareTranslationFallback {cgs@date}{\the\date}
+\DeclareTranslation{ngerman}{cgs@date}{\ifcase\month
+	\or Januar%
+	\or Februar%
+	\or M{\"a}rz%
+	\or April%
+	\or Mai%
+	\or Juni%
+	\or Juli%
+	\or August%
+	\or September%
+	\or Oktober%
+	\or November%
+	\or Dezember%
+	\fi\space\number\year}
+\DeclareTranslation{english}{cgs@date}{\the\date}
+\gdef\@date{\edef\foo{\GetTranslation{cgs@date}}\show\foo}
+
 \gdef\@place{Potsdam}
 \def\place#1{\gdef\@place{#1}}
+
+\DeclareTranslationFallback {cgs@supervision}{Supervision:\\}
+\DeclareTranslation{ngerman}{cgs@supervision}{Aufgabenstellung und Anleitung:\\}
+\DeclareTranslation{english}{cgs@supervision}{Supervision:\\}
+
+\DeclareTranslationFallback {cgs@program}{Invalid Program}
+\DeclareTranslationFallback {cgs@degree}{Invalid Degree}
+\DeclareTranslationFallback {cgs@thesiscat}{Invalid Thesis Category}
+\DeclareTranslationFallback {cgs@inprogram}{in}
+
+\DeclareTranslationFallback {cgs@fordegree}{in partial fulfillment for the academic degree}
+\DeclareTranslation{ngerman}{cgs@fordegree}{zur Erlangung des akademischen Grades}
+\DeclareTranslation{english}{cgs@fordegree}{in partial fulfillment for the academic degree}
+
+% Programs
+\ifcgs@computerscience
+  \DeclareTranslation{ngerman}{cgs@program}{Informatik}
+  \DeclareTranslation{english}{cgs@program}{Computer Science}
+\else
+\ifcgs@itse
+  \DeclareTranslation{ngerman}{cgs@program}{IT-Systems Engineering}
+  \DeclareTranslation{english}{cgs@program}{IT Systems Engineering}
+\else
+\ifcgs@dataengineering
+\DeclareTranslation{ngerman}{cgs@program}{Data Engineering}
+\DeclareTranslation{english}{cgs@program}{Data Engineering}
+\fi\fi\fi
+
+% Degrees
+\ifcgs@bsc
+\DeclareTranslation{ngerman}{cgs@degree}{\enquote{Bachelor of Science}\\(B.Sc.)}
+\DeclareTranslation{english}{cgs@degree}{\enquote{Bachelor of Science}\\(B.Sc.)}
+\DeclareTranslation{ngerman}{cgs@thesiscat}{Bachelorarbeit}
+\DeclareTranslation{english}{cgs@thesiscat}{Bachelor's Thesis}
+\DeclareTranslation{ngerman}{cgs@inprogram}{im Studiengang}
+\DeclareTranslation{english}{cgs@inprogram}{in}
+\else
+\ifcgs@msc
+\DeclareTranslation{ngerman}{cgs@degree}{\enquote{Master of Science}\\(M.Sc.)}
+\DeclareTranslation{english}{cgs@degree}{\enquote{Master of Science}\\(M.Sc.)}
+\DeclareTranslation{ngerman}{cgs@thesiscat}{Masterarbeit}
+\DeclareTranslation{english}{cgs@thesiscat}{Master's Thesis}
+\DeclareTranslation{ngerman}{cgs@inprogram}{im Studiengang}
+\DeclareTranslation{english}{cgs@inprogram}{in}
+\else
+\ifcgs@drrernat
+\DeclareTranslation{ngerman}{cgs@degree}{\enquote{doctor rerum naturalium}\\(Dr.\ rer.\ nat.)}
+\DeclareTranslation{english}{cgs@degree}{\enquote{doctor rerum naturalium}\\(Dr.\ rer.\ nat.)}
+\DeclareTranslation{ngerman}{cgs@thesiscat}{Dissertation}
+\DeclareTranslation{english}{cgs@thesiscat}{Dissertation}
+\DeclareTranslation{ngerman}{cgs@program}{in der Wissenschaftsdisziplin}
+\DeclareTranslation{english}{cgs@program}{in}
+\else
+\ifcgs@dring
+\DeclareTranslation{ngerman}{cgs@degree}{Doktor der Ingenieurwissenschaften\\(Dr.-Ing.)}
+\DeclareTranslation{english}{cgs@degree}{Doktor der Ingenieurwissenschaften\\(Dr.-Ing.)}
+\DeclareTranslation{ngerman}{cgs@thesiscat}{Dissertation}
+\DeclareTranslation{english}{cgs@thesiscat}{Dissertation}
+\DeclareTranslation{ngerman}{cgs@program}{in der Wissenschaftsdisziplin}
+\DeclareTranslation{english}{cgs@program}{in}
+\fi\fi\fi\fi
+
+\DeclareTranslationFallback {cgs@submittedby}{submitted by}
+\DeclareTranslation{ngerman}{cgs@submittedby}{vorgelegt von}
+\DeclareTranslation{english}{cgs@submittedby}{submitted by}
+
+\DeclareTranslationFallback {cgs@affiliation}{Invalid Affiliation}
+\DeclareTranslation{ngerman}{cgs@affiliation}{Hasso-Plattner-Institut \textbar{} Digital Engineering Fakult\"at\\Universit\"at Potsdam}
+\DeclareTranslation{english}{cgs@affiliation}{Hasso Plattner Institute \textbar{} Faculty of Digital Engineering\\University of Potsdam}
+
+\subject{%
+	\GetTranslation{cgs@thesiscat}\\
+	\GetTranslation{cgs@fordegree}\\
+	\GetTranslation{cgs@degree}\\
+	\GetTranslation{cgs@inprogram} \GetTranslation{cgs@program}\\
+	\vspace{1em}
+	\GetTranslation{cgs@affiliation}\\
+	\vfill
+	\GetTranslation{cgs@submittedby}}
 
 \renewcommand\maketitle{
     \begin{titlepage}
@@ -266,7 +375,7 @@
         {\Large\textbf{\@author}\par}
         \ifx\@publishers\@empty
         \else
-        {\vfill\@publishers\par}
+        {\vfill\GetTranslation{cgs@supervision}\@publishers\par}
         \fi
         {\normalsize\vfill
         \@place,\\
