@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cgsthesis}[10/10/2012 CGS Thesis class by J.E. Kyprianidis and 2017 by Sören Discher and Willy Scheibel]
 
+% Logo font: Neo Sans Std Regular
+
 \newif\ifcgs@tight
 \newif\ifcgs@afoursmall
 \newif\ifcgs@basic
