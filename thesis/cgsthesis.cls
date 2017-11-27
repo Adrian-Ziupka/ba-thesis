@@ -45,7 +45,7 @@
 % Programs
 \DeclareOption{computerscience}{\cgs@computersciencetrue}
 \DeclareOption{itse}{\cgs@itsetrue}
-\DeclareOption{dataengineering}{\cgs@dataengineering}
+\DeclareOption{dataengineering}{\cgs@dataengineeringtrue}
 
 \ProcessOptions\relax
 
@@ -326,16 +326,16 @@
 \DeclareTranslation{english}{cgs@degree}{\enquote{doctor rerum naturalium}\\(Dr.\ rer.\ nat.)}
 \DeclareTranslation{ngerman}{cgs@thesiscat}{Dissertation}
 \DeclareTranslation{english}{cgs@thesiscat}{Dissertation}
-\DeclareTranslation{ngerman}{cgs@program}{in der Wissenschaftsdisziplin}
-\DeclareTranslation{english}{cgs@program}{in}
+\DeclareTranslation{ngerman}{cgs@inprogram}{in der Wissenschaftsdisziplin}
+\DeclareTranslation{english}{cgs@inprogram}{in}
 \else
 \ifcgs@dring
-\DeclareTranslation{ngerman}{cgs@degree}{Doktor der Ingenieurwissenschaften\\(Dr.-Ing.)}
-\DeclareTranslation{english}{cgs@degree}{Doktor der Ingenieurwissenschaften\\(Dr.-Ing.)}
+\DeclareTranslation{ngerman}{cgs@degree}{\enquote{Doktor der Ingenieurwissenschaften}\\(Dr.-Ing.)}
+\DeclareTranslation{english}{cgs@degree}{\enquote{Doktor der Ingenieurwissenschaften}\\(Dr.-Ing.)}
 \DeclareTranslation{ngerman}{cgs@thesiscat}{Dissertation}
 \DeclareTranslation{english}{cgs@thesiscat}{Dissertation}
-\DeclareTranslation{ngerman}{cgs@program}{in der Wissenschaftsdisziplin}
-\DeclareTranslation{english}{cgs@program}{in}
+\DeclareTranslation{ngerman}{cgs@inprogram}{in der Wissenschaftsdisziplin}
+\DeclareTranslation{english}{cgs@inprogram}{in}
 \fi\fi\fi\fi
 
 \DeclareTranslationFallback {cgs@submittedby}{submitted by}
