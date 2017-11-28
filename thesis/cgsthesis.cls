@@ -26,6 +26,9 @@
 \newif\ifcgs@itse
 \newif\ifcgs@dataengineering
 
+% Page Margins
+\newif\ifcgs@showmargins
+
 \DeclareOption{tight}{\cgs@tighttrue}
 \DeclareOption{a4small}{\cgs@afoursmalltrue}
 \DeclareOption{basic}{\cgs@basictrue}
@@ -49,6 +52,9 @@
 \DeclareOption{itse}{\cgs@itsetrue}
 \DeclareOption{dataengineering}{\cgs@dataengineeringtrue}
 
+% Page Margins
+\DeclareOption{showmargins}{\cgs@showmarginstrue}
+
 \ProcessOptions\relax
 
 \IfFileExists{cgsthesis.cfg}{\input{cgsthesis.cfg}}
@@ -62,7 +68,8 @@
         \linespread{1.0999}\selectfont}
     %\linespread{1.1333}\selectfont
     \linespread{1.1666}\selectfont
-    \newcommand{\cgs@width}{5.25in}
+    %\newcommand{\cgs@width}{5.25in} % former 10pt width
+    \newcommand{\cgs@width}{147mm}
 \else
     \LoadClass[fontsize=11pt,chapterprefix=true,headsepline=true,
                bibliography=totoc,listof=totoc]{scrbook}
@@ -152,6 +159,14 @@
 \RequirePackage[normal,labelfont=bf,textfont=it,font=small]{caption}
 \RequirePackage[labelformat=simple,labelfont=md,textfont=it,font=scriptsize,
                 justification=centering]{subcaption}
+\RequirePackage{tikz}
+
+\ifcgs@showmargins
+  \RequirePackage{showframe}
+\fi
+
+\usetikzlibrary{calc}
+
 \renewcommand\thesubfigure{(\alph{subfigure})}
 \advance\textfloatsep 8pt
 \def\lst@MakeCaption#1{% #1 is `t' or `b'
@@ -253,10 +268,28 @@
   {\raggedsection\normalfont\sectfont\nobreak\size@paragraph}%
 }
 
-\DeclareTranslationFallback {cgs@logo}{graphics/logo_black}
-\DeclareTranslation{ngerman}{cgs@logo}{graphics/logo_black}
-\DeclareTranslation{english}{cgs@logo}{graphics/logo_black}
-\gdef\@logo{\GetTranslation{cgs@logo}}
+\DeclareTranslationFallback {cgs@Faculty}{\uppercase{Faculty of Digital Engineering}}
+\DeclareTranslation{ngerman}{cgs@Faculty}{\uppercase{Digital Engineering Fakultät}}
+\DeclareTranslation{english}{cgs@Faculty}{\uppercase{Faculty of Digital Engineering}}
+
+\DeclareTranslationFallback {cgs@group}{Computer Graphics Systems Group}
+\DeclareTranslation{ngerman}{cgs@group}{Fachgebiet Computergrafische Systeme}
+\DeclareTranslation{english}{cgs@group}{Computer Graphics Systems Group}
+
+\gdef\@logo{
+	\newlength{\cgs@logoheight}
+	\setlength{\cgs@logoheight}{3.5em}
+	\begin{tikzpicture}[]
+	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=1pt] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=\cgs@logoheight]{graphics/hpi-logo.png} };
+	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=-1pt] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=\cgs@logoheight]{graphics/uni-logo.jpg} };
+	\draw[line width=1pt] (0.0,0.0) -- ($(unilogo.west)-(0.35,0.0)$);
+	\node[anchor=south west, yshift=4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \LARGE\GetTranslation{cgs@Faculty} };
+	\node[anchor=north west, yshift=-4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \LARGE\GetTranslation{cgs@group} };
+	\ifcgs@showmargins
+	  \draw let \p{south}=(hpilogo.south) in (0.0,\y{south}) -- (\textwidth,\y{south});
+	\fi
+	\end{tikzpicture}
+}
 
 \DeclareTranslationFallback {cgs@date}{\the\date}
 \DeclareTranslation{ngerman}{cgs@date}{\ifcase\month
@@ -361,10 +394,7 @@
 \renewcommand\maketitle{
     \begin{titlepage}
         \centering\large\sffamily%
-        \ifx\@logo\@empty
-        \else
-            \makebox[\textwidth]{\includegraphics{\@logo}}
-        \fi
+        \@logo
         \vfill
         {\Huge\textbf{\@title}\par}
         \ifx\@subtitle\@empty
