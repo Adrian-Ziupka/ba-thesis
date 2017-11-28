@@ -74,6 +74,7 @@
     \newcommand{\cgs@width}{147mm}
 \fi
 
+\RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{scrhack}
 \RequirePackage{scrpage2}
@@ -138,9 +139,8 @@
 \RequirePackage{textcomp}
 \RequirePackage{math tools}
 \RequirePackage{graphicx}
-\RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage[hyphens]{url}
-\RequirePackage[colorlinks=true,citecolor=Blue,linkcolor=Black,urlcolor=Blue,bookmarks=false]{hyperref}
+\RequirePackage[colorlinks=true,citecolor=blue,linkcolor=black,urlcolor=blue,bookmarks=false]{hyperref}
 \RequirePackage{xspace}
 \RequirePackage{afterpage}
 \RequirePackage[normalem]{ulem}
