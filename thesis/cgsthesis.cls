@@ -1,7 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cgsthesis}[10/10/2012 CGS Thesis class by J.E. Kyprianidis and 2017 by Sören Discher and Willy Scheibel]
 
-% Logo font: Neo Sans Std Regular
+% Logo
+\newif\ifcgs@coloredlogo
+\newif\ifcgs@sizeadjustedlogo
 
 \newif\ifcgs@tight
 \newif\ifcgs@afoursmall
@@ -28,6 +30,10 @@
 
 % Page Margins
 \newif\ifcgs@showmargins
+
+% Logo
+\DeclareOption{coloredlogo}{\cgs@coloredlogotrue}
+\DeclareOption{sizeadjustedlogo}{\cgs@sizeadjustedlogotrue}
 
 \DeclareOption{tight}{\cgs@tighttrue}
 \DeclareOption{a4small}{\cgs@afoursmalltrue}
@@ -276,13 +282,26 @@
 \DeclareTranslation{ngerman}{cgs@group}{Fachgebiet Computergrafische Systeme}
 \DeclareTranslation{english}{cgs@group}{Computer Graphics Systems Group}
 
+\ifcgs@coloredlogo
+  \gdef\@logosuffix{cmyk}
+\else
+  \gdef\@logosuffix{black}
+\fi
+
+\gdef\@unilogosize{1.0}
+\ifcgs@sizeadjustedlogo
+  \gdef\@hpilogosize{0.42}
+\else
+  \gdef\@hpilogosize{1.0}
+\fi
+
 \gdef\@logo{
 	\newlength{\cgs@logoheight}
 	\setlength{\cgs@logoheight}{3.5em}
 	\begin{tikzpicture}[]
-	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=1pt] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=\cgs@logoheight]{graphics/hpi-logo.png} };
-	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=-1pt] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=\cgs@logoheight]{graphics/uni-logo.jpg} };
-	\draw[line width=1pt] (0.0,0.0) -- ($(unilogo.west)-(0.35,0.0)$);
+	\node[anchor=east, inner sep=0pt, outer sep=0pt] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=\@hpilogosize\cgs@logoheight]{graphics/hpi_logo_\@logosuffix} };
+	\node[anchor=east, inner sep=0pt, outer sep=0pt] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=\@unilogosize\cgs@logoheight]{graphics/uni_logo_\@logosuffix} };
+	\draw[line width=1pt] (0.0,0.0) -- ($(unilogo.west)-(0.25,0.0)$);
 	\node[anchor=south west, yshift=4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large\GetTranslation{cgs@Faculty} };
 	\node[anchor=north west, yshift=-4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large\GetTranslation{cgs@group} };
 	\ifcgs@showmargins
