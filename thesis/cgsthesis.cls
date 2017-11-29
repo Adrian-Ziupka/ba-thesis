@@ -283,8 +283,8 @@
 	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=1pt] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=\cgs@logoheight]{graphics/hpi-logo.png} };
 	\node[anchor=east, inner sep=0pt, outer sep=0pt, yshift=-1pt] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=\cgs@logoheight]{graphics/uni-logo.jpg} };
 	\draw[line width=1pt] (0.0,0.0) -- ($(unilogo.west)-(0.35,0.0)$);
-	\node[anchor=south west, yshift=4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \LARGE\GetTranslation{cgs@Faculty} };
-	\node[anchor=north west, yshift=-4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \LARGE\GetTranslation{cgs@group} };
+	\node[anchor=south west, yshift=4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large\GetTranslation{cgs@Faculty} };
+	\node[anchor=north west, yshift=-4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large\GetTranslation{cgs@group} };
 	\ifcgs@showmargins
 	  \draw let \p{south}=(hpilogo.south) in (0.0,\y{south}) -- (\textwidth,\y{south});
 	\fi
