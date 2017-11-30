@@ -432,3 +432,51 @@
         \@place,\\
         \@date\par}
     \end{titlepage}}
+
+\DeclareTranslationFallback {cgs@statutorydeclarationtitle}{Statutory Declaration}
+\DeclareTranslation{ngerman}{cgs@statutorydeclarationtitle}{Eidesstattliche Erklärung}
+\DeclareTranslation{english}{cgs@statutorydeclarationtitle}{Statutory Declaration}
+
+\DeclareTranslationFallback {cgs@placestring}{Place}
+\DeclareTranslation{ngerman}{cgs@placestring}{Ort}
+\DeclareTranslation{english}{cgs@placestring}{Place}
+
+\DeclareTranslationFallback {cgs@datestring}{Date}
+\DeclareTranslation{ngerman}{cgs@datestring}{Datum}
+\DeclareTranslation{english}{cgs@datestring}{Date}
+
+\DeclareTranslationFallback {cgs@signaturestring}{Signature}
+\DeclareTranslation{ngerman}{cgs@signaturestring}{Unterschrift}
+\DeclareTranslation{english}{cgs@signaturestring}{Signature}
+
+\DeclareTranslationFallback {cgs@statutorydeclaration}{Invalid declaration}
+\DeclareTranslation{ngerman}{cgs@statutorydeclaration}{
+Ich erkläre hiermit an Eides statt, dass ich die vorliegende
+Arbeit ohne unzulässige Hilfe Dritter und ohne Benutzung anderer
+als der angegebenen Hilfsmittel angefertigt habe; die aus anderen
+Quellen direkt oder indirekt übernommenen Daten und Konzepte sind
+unter Angabe des Literaturzitats gekennzeichnet.
+Diese Arbeit hat in gleicher oder ähnlicher Form noch keiner Prüfungsbehörde vorgelegen.
+}
+\DeclareTranslation{english}{cgs@statutorydeclaration}{
+I declare that I have developed and written the enclosed thesis
+completely by  myself, and have not used sources or means without declaration in the text. Any  thoughts from others or literal quotations are clearly marked. The Master Thesis was not used in the same or in a similar version to achieve an academic grading or is being  published elsewhere.
+}
+
+\newcommand{\printstatutorydeclaration}{
+    \pagestyle{plain}
+    
+    \chapter*{\GetTranslation{cgs@statutorydeclarationtitle}}
+    
+    \GetTranslation{cgs@statutorydeclaration}
+    
+    \vspace{1.5cm}
+    
+    \noindent
+    \begin{tabular}{p{0.4\linewidth}p{0.1\linewidth}p{0.4\linewidth}}
+    	\@place, \@date &&\\
+    	\cline{1-1}
+    	\cline{3-3}
+    	(\GetTranslation{cgs@placestring}, \GetTranslation{cgs@datestring})&&(\GetTranslation{cgs@signaturestring})
+    \end{tabular}
+}
