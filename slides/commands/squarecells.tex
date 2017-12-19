@@ -1,0 +1,37 @@
+% Added second parameter for celldim and commented a few lines out as needed for integration - Dietmar Funck 27.3.2015
+% Original version was published on http://www.tug.org/pracjourn/2005-2/robertson/
+% The modified version used was published on http://tex.stackexchange.com/questions/49746/a-table-with-square-cells
+%
+% This code written by Will Robertson and published in PracTeX Journal 2005-2
+% "Square cells: an array cooking lesson"
+% Modified for line wrapping
+
+%\documentclass{article}
+%\usepackage{array}
+%\usepackage{calc}
+
+\newlength\celldim
+\newlength\fontheight
+\newlength\extraheight
+\newcounter{sqcolumns}
+
+\newcolumntype{S}{
+ @{}
+ >{\centering \rule[-0.5\extraheight]{0pt}{\fontheight + \extraheight}%
+ \begin{minipage}{\celldim}\centering}
+ p{\celldim}
+ <{\end{minipage}} 
+ @{} }
+
+\newcolumntype{Z}{ @{} >{\centering} p{\celldim} @{} }
+
+\newenvironment{squarecells}[2]
+  {\setlength\celldim{#2}%
+   \settoheight\fontheight{A}%
+   \setlength\extraheight{\celldim - \fontheight}%
+   \setcounter{sqcolumns}{#1 - 1}%
+   \begin{tabular}{|S|*{\value{sqcolumns}}{Z|}}\hline}
+% squarecells tabular goes here
+  {\end{tabular}}
+
+\newcommand\nl{\tabularnewline\hline} 

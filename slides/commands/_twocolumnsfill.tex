@@ -1,0 +1,12 @@
+\newcommand<>{\twocolumnsfill}[3] % {left-column-width}{left-column-content}{right-column-content}
+{%
+\FPeval{\y}{clip(1-#1)}%
+\begin{columns}[T]%
+  \begin{column}{#1\linewidth}%
+  #2
+  \end{column}%
+  \begin{column}{\y\linewidth}%
+  #3
+  \end{column}%
+\end{columns}%
+}

@@ -1,0 +1,10 @@
+% Based on http://tex.stackexchange.com/a/269309
+\newcommand\fakeitem{%
+  \begingroup
+  \leavevmode
+  \usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}%
+  \usebeamertemplate**{itemize item}%
+  \endgroup
+  \hspace{\labelsep}
+}

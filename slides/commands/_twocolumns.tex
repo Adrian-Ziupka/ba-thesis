@@ -1,0 +1,11 @@
+\newcommand<>{\twocolumns}[4] % {left-column-width}{right-column-width}{left-column-content}{right-column-content}
+{%
+\begin{columns}[T]%
+  \begin{column}{#1\textwidth}%
+  #3
+  \end{column}%
+  \begin{column}{#2\textwidth}%
+  #4
+  \end{column}%
+\end{columns}%
+}

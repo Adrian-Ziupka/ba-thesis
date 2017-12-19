@@ -1,0 +1,284 @@
+
+\slidesectionwithgraphic{Software Project Topics}{images/overview}
+
+% glkernel glm integration
+% gloperate asynchronuous pipelines
+% high-performance t-SNE
+% C++ node integration
+% Font-Catalog management tool
+
+\begin{frame}{Topics | \textbf{Objectives and Overview}}
+	
+	\twocolumns{0.5}{0.48}
+	{
+		The goal of the software development project are:
+		\begin{itemize}
+			\setlength{\itemsep}{5pt}
+			\item Technical challenging C++ topics
+			\item Full development cycle including release management
+			\item Cross-platform, open source code development
+			\item Diverse domains and target areas
+			\item Team-development with up to 4 students
+		\end{itemize}
+	}
+	{
+		\pause
+		Typical working packages include:
+		\begin{itemize}
+			\setlength{\itemsep}{5pt}
+			\item Requirements engineering
+			\item Distributed development
+			\item Public interface documentation
+			\item Testing (unit tests, integration tests, cross-platform compatibility)
+			\item Deployment for multiple platforms
+			\item Public Content Management (Release News, Website, Usage descriptions, Setup instructions)
+		\end{itemize}
+	}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Topic List}}
+	
+	\bigskip
+	\begin{description}[Visual Computing Asset GUI]
+		\setlength{\itemsep}{13pt}
+		\item[Kernel Library] Extension and Optimization of glkernel
+		\item[Asynchronuous Scheduler] Asynchronous task scheduler and dependency management
+		\item[Dimensionality Reduction] High-performance t-SNE data dimensionality reduction library
+		\item[Node Library] Node.js as C++ library
+		\item[Font Assets Generator] Font asset generator for high-performance font rendering
+		\item[Ribbon GUI] Qt-based Ribbon-GUI library
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Extension and Optimization for \emph{glkernel}}}
+	
+	\begin{description}[C++ Competencies]
+		\item[Description] Processing as well as computer graphics applications often rely on well-designed sampling strategies. glkernel is a cross-platform C++ library for designing, computing, and serializing sampling strategies by means of organized, n-dimensional sets of m-dimensional samples (kernels). Fast, reliable, and highly customizable computation of sampling strategies are the main objectives.
+		\item[Goals] \begin{enumerate}
+				\item Implement SSE2 optimized kernel computations
+				\item Implement additional sample transformations and sampling strategies
+				\item Implement a visual kernel plotter
+			\end{enumerate}
+		\item[Starting Points] \url{https://github.com/cginternals/glkernel}, \url{https://github.com/g-truc/glm}
+		\item[C++ Competencies] Templates, Parallelization, Vectorization, Library Design, CLI
+		\item[License] MIT
+%		\item[Instructor] \grayout{Daniel}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Asynchronous task scheduler}}
+	
+	\begin{description}[C++ Competencies]
+		\item[Description] Data processing and visualization processes often comprise several well defined (sub-)tasks that depend on one another through their inputs and outputs, thus forming a directed graph, whose execution can be (partially) parallelized. Tasks may be created once and scheduled recurringly on-demand when inputs change, or on-the-fly as \enquote{single-shot} tasks. CG-related tasks often require multi-phase processing, e.g. \textit{(initialize, update, process, deinitialize)}. In addition, some tasks require special thread affinity, e.g., when involving access to devices (via OpenGL, OpenCL, etc.) or the UI.
+		\item[Goals] \begin{enumerate}
+				\item Setup cmake-init project
+				\item Implement asynchronous scheduling of tasks with
+				\item Dependency management based on required data
+				\item Handle scheduling requirements, e.g., thread affinity, initialization phase
+			\end{enumerate}
+		\item[Starting Points] Stage/Pipeline concept of \url{https://github.com/cginternals/gloperate}
+		\item[C++ Competencies] Parallelization, Templates, Library Design
+		\item[License] MIT
+%		\item[Instructor] \grayout{Jan Ole}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{High-performance t-SNE data dimensionality reduction library}}
+	
+	\begin{description}[C++ Competencies]
+		\item[Description] t-SNE is a library for dimensionality reduction. It is currently written in C++, lacking most best-practices. Most code seems to be parallelizable, even coprocessor offloading seems feasible.
+		\item[Goals]
+		\begin{enumerate}
+			\item Refactor and port library using modern C++ features
+			\item Make use of parallelization using OpenMP and vectorization using SSE and AVX
+			\item CMake project setup
+			\item Provide cross-platform deployment
+		\end{enumerate}
+		\item[Starting Points] C++ t-SNE open source library: \url{https://github.com/lvdmaaten/bhtsne}\\\url{https://github.com/cginternals/cmake-init}
+		\item[C++ Competencies] Parallelization, Vectorization, Library Design
+		\item[License] BSD
+%		\item[Instructor] \grayout{Willy}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Node.js as Library}}
+	
+	\begin{description}[C++ Competencies]
+		\item[Description] Node.js provides a JavaScript runtime with access to a large environment and vital community.
+		The features of Node.js raise the desire for a usage as library for integration in C++ projects.
+		Unfortunately, the project was initially designed to be used as executable and lacks actual public interfaces, documentation and access to sophisticated runtime features.
+		\item[Goals]
+			\begin{enumerate}
+				\item Extend project setup by sophisticated public interface declaration facilities
+				\item Develop and declare public interfaces for pre-defined use cases
+				\item Module-design to allow for both executable and library usage
+				\item Extend documentation for new public interfaces
+				\item Communication and negotiation with original contributors about reintegration into official Node.js project (setup fork if undesired by contributors)
+			\end{enumerate}
+		\item[Starting Points] Node.js: \url{https://github.com/nodejs/node}
+		\item[C++ Competencies] Library Design, Reverse Engineering, Open-Source Contribution
+		\item[License] MIT/Various
+		%		\item[Instructor] \grayout{Stefan}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Font Asset Generator}}
+	
+	\begin{description}[C++ Competencies]
+		\item[Description] Real-time font rendering is based on pre-processed font assets. Depending on the use case and targeted quality, various aspects of font assets need to be tweaked in conjunction to the rendering algorithms used. As of yet there is no open and free font asset generator available that satisfies all of todays demands.
+		\item[Goals]
+			\begin{enumerate}
+				\item CLI asset generator for bitmap, distance field, and vector map based rendering
+				\item GUI for asset generator, covering real-time feedback and inspection of assets and resulting rendering quality
+			\end{enumerate}
+		\item[Starting Points] freetype, cmake-init, Qt, Dead-Reckoning for signed distance fields
+		\item[C++ Competencies] GUI-Development, Third-Party usage
+		\item[License] MIT
+%		\item[Instructor] \grayout{Daniel}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}{Topics | \textbf{Qt-based Ribbon-GUI library}}
+			
+	\begin{description}[C++ Competencies]
+		\item[Description] Tabbed ribbon layouts have been popularized by applications such as Microsoft Office for over a decade. However, popular, GUI frameworks such as Qt still don't come with built-in support for such layouts. While some commercial solutions exist, no such libraries exist for the open source community. Your task: Implement a library that facilitates generating such tabbed, modular layouts for Qt-based applications.
+		\item[Goals]
+			\begin{enumerate}
+				\item Implement Ribbon library using modern C++ features and existing Qt concepts
+				\item Setup cmake project setup
+			\end{enumerate}
+		\item[Starting Points] cmake-init, Qt
+		\item[C++ Competencies] GUI-Development, Third-Party usage
+		\item[License] MIT
+%		\item[Instructor] \grayout{Heiko, S\"oren}
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}[fragile]{Topics | \textbf{Preliminary Timeline}}
+
+	\makeatletter
+	% Define our own style
+	\tikzstyle{week list monday}=[
+	% Note that we cannot extend from week list,
+	% the execute before day scope is cumulative
+	execute before day scope={%
+		\ifdate{day of month=1}{\ifdate{equals=\pgfcalendarbeginiso}{}{
+				% On first of month, except when first date in calendar.
+				\pgfmathsetlength{\pgf@y}{\tikz@lib@cal@month@yshift}%
+				\pgftransformyshift{-\pgf@y}
+		}}{}%
+	},
+	execute at begin day scope={%
+		\pgfmathsetlength\pgf@x{\tikz@lib@cal@xshift}%
+		\c@pgf@counta=\pgfcalendarcurrentweekday
+		\pgf@x=\c@pgf@counta\pgf@x
+		% Shift to the right position for the day.
+		\pgftransformxshift{\pgf@x}
+	},
+	execute after day scope={
+		% Week is done, shift to the next line.
+		\ifdate{Sunday}{
+			\pgfmathsetlength{\pgf@y}{\tikz@lib@cal@yshift}%
+			\pgftransformyshift{-\pgf@y}
+		}{}%
+	},
+	% This should be defined, glancing from the source code.
+	tikz@lib@cal@width=7
+	]
+	\tikzoption{day headings}{\tikzstyle{day heading}=[#1]}
+	\tikzstyle{day heading}=[]
+	\tikzstyle{day letter headings}=[
+	execute before day scope={%
+		\ifdate{day of month=1}{%
+			{
+				\pgfmathsetlength{\pgf@xa}{\tikz@lib@cal@xshift}%
+				\pgf@xb=\tikz@lib@cal@width\pgf@xa%
+				\advance\pgf@xb by-\pgf@xa%
+				\pgf@xb=.5\pgf@xb%
+				\pgftransformxshift{\pgf@xb}%
+				\pgftransformxshift{-\cellwidth/2}%
+				\pgfmathsetlength{\pgf@y}{\tikz@lib@cal@yshift}%
+				\pgftransformyshift{0.333\pgf@y}
+				\tikzmonthcode%
+			}
+		}{}}%
+	]
+	\makeatother
+	
+	\tikzstyle{annotation}=[font=\footnotesize, fill=orange!50, inner sep=2pt]
+	\colorlet{deadline}{red!70!black}
+	\colorlet{lecture}{green!70!black}
+	\colorlet{lecturebuffer}{green!50!black}
+	\colorlet{holiday}{black!25}
+	
+	\newcommand{\specialdates}{
+		if (equals=10-16) [nodes={fill=lecturebuffer}]%
+		if (equals=10-23) [nodes={fill=lecture}]%
+		if (equals=10-30) [nodes={fill=lecture}]%
+		if (equals=11-13) [nodes={fill=lecture}]%
+		if (equals=11-20) [nodes={fill=lecture}]%
+		if (equals=11-27) [nodes={fill=lecture}]%
+		if (equals=12-04) [nodes={fill=lecture}]%
+		if (equals=12-11) [nodes={fill=lecture}]%
+		if (equals=12-18) [nodes={fill=lecture}]%
+		if (equals=01-08) [nodes={fill=lecture}]%
+		if (equals=01-22) [nodes={fill=lecture}]%
+		if (equals=01-29) [nodes={fill=lecture}]%
+		if (equals=02-05) [nodes={fill=lecture}]%
+		if (equals=02-12) [nodes={fill=lecturebuffer}]%
+		if (equals=02-19) [nodes={fill=lecturebuffer}]%
+		if (equals=02-26) [nodes={fill=lecturebuffer}]%
+		if (equals=11-06) [nodes={fill=deadline}]%
+		if (equals=01-15) [nodes={fill=deadline}]%
+		if (equals=03-05) [nodes={fill=deadline}]%
+		if (equals=03-12) [nodes={fill=deadline}]%
+		if (equals=03-23) [nodes={fill=deadline}]%
+		if (equals=10-31) [nodes={holiday}]%
+		if (between=2017-12-21 and 2018-01-03) [nodes={holiday}]%
+	}
+	
+	\centering
+	% The actual calendar is now rather easy:
+	\begin{tikzpicture}[
+		every calendar/.style={
+		month label above centered,
+		% day letter headings,
+		month text={\textit{\%mt \%y0}},
+		if={(Sunday) [black!25]},
+		if={(Saturday) [black!25]},
+		week list monday,
+		day yshift=1.3em, day xshift=1.8em,
+		every day/.style={anchor=center,day text={\%d=}}}]
+		\matrix[column sep=2.0em, row sep=1.0em] {
+			\calendar (Oct) [dates=2017-10-01 to 2017-10-last] \specialdates; &
+			\calendar (Nov) [dates=2017-11-01 to 2017-11-last] \specialdates; &
+			\calendar (Dec) [dates=2017-12-01 to 2017-12-last] \specialdates; & \\
+			\calendar (Jan) [dates=2018-01-01 to 2018-01-last] \specialdates; &
+			\calendar (Feb) [dates=2018-02-01 to 2018-02-last] \specialdates; &
+			\calendar (Mar) [dates=2018-03-01 to 2018-03-last] \specialdates; & \\
+		};
+	
+		\draw[black] (Nov-2017-11-06) -- +(-0.35,+0.0) -- +(-0.35,-1.75) node [annotation] {Motivation Presentation};
+		\draw[black] (Jan-2018-01-15) -- +(-0.35,+0.0) -- +(-0.35,-1.3) -- +(+1.0,-1.3) node [annotation] {Intermediate Presentation};
+		\draw[black] (Mar-2018-03-05) -- +(-0.35,+0.0) -- +(-0.35,-1.75) node [annotation] {Final Presentation};
+		\draw[black] (Mar-2018-03-12) -- +(-0.35,+0.0);
+		\draw[black] (Mar-2018-03-23) -- +(+0.35,+0.0) -- +(+0.35,-0.9) node [annotation] {Software Release};
+	\end{tikzpicture}
+	
+\end{frame}
