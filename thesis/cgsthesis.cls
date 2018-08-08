@@ -397,8 +397,8 @@
 \DeclareTranslation{english}{cgs@submittedby}{submitted by}
 
 \DeclareTranslationFallback {cgs@affiliation}{Invalid Affiliation}
-\DeclareTranslation{ngerman}{cgs@affiliation}{Hasso-Plattner-Institut \textbar{} Digital Engineering Fakult\"at\\Universit\"at Potsdam}
-\DeclareTranslation{english}{cgs@affiliation}{Hasso Plattner Institute \textbar{} Faculty of Digital Engineering\\University of Potsdam}
+\DeclareTranslation{ngerman}{cgs@affiliation}{Hasso-Plattner-Institut // Digital Engineering Fakult\"at // Universit\"at Potsdam}
+\DeclareTranslation{english}{cgs@affiliation}{Hasso Plattner Institute //  Faculty of Digital Engineering // University of Potsdam}
 
 \subject{%
 	\GetTranslation{cgs@thesiscat}\\
