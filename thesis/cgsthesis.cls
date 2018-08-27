@@ -1,5 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cgsthesis}[10/10/2012 CGS Thesis class by J.E. Kyprianidis and 2017 by Sören Discher and Willy Scheibel]
+\ProvidesClass{cgsthesis}[27/08/2018 CGS Thesis Class]
+% 2012 by J.E. Kyprianidis
+% 2017 by Sören Discher and Willy Scheibel
 
 % Logo
 \newif\ifcgs@coloredlogo
