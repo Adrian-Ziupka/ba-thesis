@@ -32,30 +32,37 @@
 \bibliographystyle{abbrvnat}
 \usepackage{doi}
 
+\RequirePackage{showframe}
+
 \date{}
 
 \newlength{\cgslogoheight}
 \setlength{\cgslogoheight}{3.5em}
 
+%\KOMAoption{fontsize}{9pt}
+
 \renewcommand*{\titlepagestyle}{empty}
 
+\setkomafont{title}{\normalfont\bfseries}
+\setkomafont{subtitle}{\normalfont\bfseries}
+\makeatletter
+\patchcmd{\@maketitle}{\@title}{\Large \@title}{}{}
+\patchcmd{\@maketitle}{\usekomafont{subtitle}\@subtitle}{\usekomafont{subtitle}\large \@subtitle}{}{}
+\patchcmd{\@maketitle}{\@publishers}{\normalsize \@publishers}{}{}
+\makeatother
+
 \titlehead{
-	\begin{tikzpicture}[]
-	\node[anchor=east, inner sep=0pt, outer sep=0pt] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=0.42\cgslogoheight]{graphics/hpi_logo_cmyk} };
-	\node[anchor=east, inner sep=0pt, outer sep=0pt] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=1.0\cgslogoheight]{graphics/uni_logo_cmyk} };
-	\draw[line width=1pt] (0.0,0.0) -- ($(unilogo.west)-(0.25,0.0)$);
-	\node[anchor=south west, yshift=4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large \uppercase{Digital Engineering Faculty}};
-	\node[anchor=north west, yshift=-4pt, inner sep=0pt, outer sep=0pt] at (0.0, 0.0) { \large \uppercase{Computer Graphics Systems Group}};
+	\begin{tikzpicture}[inner sep=0pt, outer sep=0pt]
+	\node[anchor=east] at (\textwidth,0.0) (hpilogo) { \includegraphics[height=0.42\cgslogoheight]{graphics/hpi_logo_cmyk} };
+	\node[anchor=east] at ($(hpilogo.west)-(0.25,0.0)$) (unilogo) { \includegraphics[height=1.0\cgslogoheight]{graphics/uni_logo_cmyk} };
+	\draw[line width=0.5pt] (0.0,0.0) -- ($(unilogo.west)-(0.25,0.0)$);
+	\node[anchor=south west, yshift=4pt] at (0.0, 0.0) { \usekomafont{publishers}\large \uppercase{Digital Engineering Faculty}};
+	\node[anchor=north west, yshift=-4pt] at (0.0, 0.0) { \usekomafont{publishers}\large \uppercase{Computer Graphics Systems Group}};
 	\end{tikzpicture}
 }
 
-\newcommand{\authors}[1]{
-	\author{%
-		\parbox{\linewidth}{%
-			\centering%
-			#1%
-		}%
-	}
+\newcommand{\authors}[1]{%
+\publishers{\vspace{-2.5\baselineskip}#1}
 }
 
 
