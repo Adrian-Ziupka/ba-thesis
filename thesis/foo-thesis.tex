@@ -1,6 +1,8 @@
+\RequirePackage{scrlfile}
+\ReplacePackage{scrpage2}{scrlayer-scrpage}
 \documentclass[
 %% logo
-%coloredlogo,
+coloredlogo,
 %sizeadjustedlogo,
 %% fonts
 defaultfont,
@@ -11,8 +13,8 @@ defaultfont,
 %times,
 %timesNR,
 %% degree
-%bsc,
-msc,
+bsc,
+%msc,
 %drrernat,
 %dring,
 %% program
@@ -39,14 +41,16 @@ itse,
 
 % Title page
 
-\title{Titel der Arbeit}
-%\subtitle{Untertitel} % z.B. englischer Titel bei Bachelorarbeit
+\title{Konzepte und Techniken zur Evaluierung des Straßenzustands\\ von Mobile-Mapping-Punktwolken}
+\subtitle{Concepts and Methods for Evaluating Pavement Condition\\ of Mobile Mapping Point Clouds}
 
-\author{Foo Bar}
+\author{Adrian Ziupka}
 
 \publishers{%
-    Prof.\ Dr.\ J\"urgen D\"ollner\\
-    Max Mustermann}
+    Prof. Dr. Jürgen Döllner\\
+    Dr. Rico Richter\\
+    Leon Masopust
+    Sören Discher}
 
 \place{Potsdam}
 \date{\today}
@@ -60,15 +64,14 @@ itse,
 
 \maketitle
 
-\tableofcontents
-
 \include{preface}
+
+\tableofcontents
 
 \mainmatter
 \include{chap1}
 \include{chap2}
 \include{chap3}
-
 
 % force line breaks inside URLs
 \begingroup
