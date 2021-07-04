@@ -1,0 +1,25 @@
+%!TEX root = foo-thesis.tex
+
+\chapter{Implementierung}
+
+\section{Systemüberblick} % u.a. mit pctool, pcviewer, PCNN statt extra kurzer Abschnitt zu PCNN/PointNet-Impl
+
+\section{Preprocessing} % Pauls Ground Detection, Street Extraction
+
+\section{Ansatz Feature-Extraction} 
+
+\subsection{Features} % Gewinnung/Berechnung der Features, Intensity contraint und -Collector, EigenvalueCalculator und darüber Curvature & Co., etc.
+
+\subsection{Scales} % einfach über kd-tree
+
+\subsection{Ein- und mehrwertige Features} % Histogram-Klsse etwas erläutern (aber nicht die hässlichen Parts...)
+
+\subsection{Uniqueness} % KL-Divergenz aufschreiben, über Histogramme argumentieren
+
+\subsection{Sonstige Verarbeitungsschritte} % Intensity-Preprocessing; Formel aus FPFH-Paper zur Approximation, zuvor L1-Normalisierung der Distanzen bzw. weights
+
+\subsection{Prediction per Random Forest} % RF aus scikit-learn erklären inkl. wichtiger Parameter
+
+% \section{Ansatz Deep Learning} % nicht selbst implementiert, siehe Systemüberblick
+
+\section{Postprocessing} % einfach auch wieder in kleinem Scale Klassen der Nachbarschaft anschauen
