@@ -3,35 +3,57 @@
 \chapter{Evaluierung}
 
 \section{Trainings- und Testdaten}
+% Vorstellung der beiden Punktwolken inkl. (mean) Dichte, Anzahl der Punkte pro Klasse, sonstige Auffälligkeiten (vllt hier die low Gully points) mit BILDERN
+% hier irgendwo betonen, dass im chinesischen Paper Straße mit sehr schlechtem Zustand (größere Schäden, durchschnittliches Schlagloch mit Durchmesser 50cm) genutzt und eben Drohnendaten -> sehr viel weniger Punkte/Dichte (900 000 mit nur 40/m^2), auch keine Aussage getroffen über Laufzeit, hier aber eben sehr viel höher bei größeren Scales und deswegen Bestreben, Scales möglichst klein zu halten (dort ja ab 20cm bis 100cm im 5cm-Step (plus drei Makroscales), hier aber dichter und damit feiner)
 
-% \section{Experimente}
+\section{Metriken}
+
+Um die Predictions von Modellen quantitativ evaluieren zu können, existieren verschiedene Maße. Zwei für Klassifizierungen häufig genutzte sind \text{Precision} und \textit{Recall}, die sowohl für eine gesamte Prediction als auch pro Klasse berechnet werden können. \mediumtodo{Paper?} Auf eine Ausgangsklasse $\mathfrak{K}$ und Predictions von Punktwolken bezogen, drückt der Precision-Wert $P$ den Prozentsatz der Punkte aus, die als $\mathfrak{K}$ klassifiziert wurden und tatsächlich $\mathfrak{K}$ sind. Der Recall-Wert $R$ hingegen gibt den Prozentsatz aller $\mathfrak{K}$-Punkte an, die ``gefunden'' und korrekt als $\mathfrak{K}$ klassifiziert wurden. Je nach Anwendungsfall kann der eine oder der andere Wert bedeutsamer sein und höher gewichtet werden. Für die in dieser Arbeit behandelte Schadenserkennung sollen beide gleich stark gewichtet werden. Um beide Werte zu einem einzelnen zusammenzufassen und dabei besonders niedrige Ausschläge in einem der beiden zu bestrafen, kommt oft der $F_1$-Score zum Einsatz:
+\begin{equation}
+    F_1 = \frac{2 * P * R}{P + R}
+\end{equation}
+Für die kommenden Experimente werden jeweils Tabellen aufgeführt mit diesen drei Metriken. Dabei werden sie nur pro Klasse berechnet, da sie bezogen auf die Gesamtklassifzierung - aufgrund der um ein Vielfaches höheren Zahl an gewöhnlichen Straßenpunkten gegenüber dem Rest - wenig Aussagekraft besitzen bezüglich der Qualität des Ergebnisses.
 
 \section{Preprocessing} 
+% Bild von nur Ground Detection und darauf ausgeführte Street Extraction, darüber reden was gut/schlecht und warum
+% inwiefern Street Extraction evaluieren? vllt. mit Metriken basierend auf meiner "idealen", zuvor extrahierten Straße (wie viel davon drin, wie viel zusätzlicher Noise?)
+% Intensity-Preprocessing: konkrete Werte nennen für train und test (IQR und die Thresholds) 
+% -> hier auch begründen, dass in dem Fall kein großer Unterschied, aber könnte sein bei wenigen extrem stark reflektierenden Punkten (Wasser?), die Normalisierung ebenfalls verzerren
 
 \section{Ansatz Feature-Extraction} 
+% erwähnen, dass RF sehr robust und bei testweisen mehrfachen Experimenten F1-Unterschiede von ~1%, daher folgend immer nur ein Durchlauf (außer ich nutze doch "gleich-viel-Boden-wie-Flickstellen"-Samplingmethode) 
+% alle Ergebnisse ohne Postprocessing, mit diesem nur im entsprechenden Abschnitt zum besseren Vergleich
 
-\subsection{Features}
+\subsection{Ergebnisse}
+% hier Ergebnisse des Standardablaufs mit Auffälligkeiten, Erklärungen, etc.
+% zu Flickstellen: viel davon ausgelassen, aber das was erwischt hat ziemlich starke Intensitydiffs, ausgelassene eher schwach zu erkennen, also vertretbar: darstellen mit Bild + roten Kreisen
 
-\subsection{Scales}
+\subsection{Vergleich mit nur einwertigen Features}
+% hier Vergleich mit einem Durchlauf, der nur einwertige Features nutzt (hoffentlich etwas schlechter)
 
-\subsection{Ein- und mehrwertige Features} % hier darauf eingehen, dass durch Histogramme größere Scales erspart bleiben
+\subsection{Vergleich mit größeren Scales}
+% hier Vergleich mit zusätzlichem größeren Scale (evtl. auch einmal mit und einmal ohne Approximation), hoffentlich nicht allzu viel besser (höchstens beim Gullyinneren)
+% auch wenn letztlich nicht genutzt -> sinnvoll für dedizierte Gullyerkennung oder Straßen in sehr schlechtem Zustand
+% hier auch Beispielzahlen zur Laufzeit mit der Approximation und ohne berechnen und aufschreiben (wie viel Ersparnis bringt dieser Ansatz?)
 
-\subsection{Uniqueness}
+\subsection{Vergleich ohne Uniqueness}
+% hier Vergleich komplett ohne Uniqueness, hoffentlich keine großen Unterschiede (bzgl. Training)
+% in Experimenten testen, wie toll das wirklich ist -> vllt nämlich mal (ohne Uniqueness) Klassen gleich häufig samplen (Anzahl Bodenpunkte ist z.B. Anzahl Punkte der Flickstellen oder Gesamtzahl von Nicht-Boden)
+% auch Bild der uniquen Punkte zum Vergleich (vllt. aber schon weiter oben, da ja eig auch beim normalen Ergebnis verwendet)
+% wenn Ergebnisse tatsächlich kaum anders: erläutern, dass momentane Uniqueness auch eher vorsichtig, damit möglichst viele Klassen erwischt - ist aber gerade bei Flickstellen (zumindest mit momentanen Features) schwer, aber trotzdem Reduktion auf die Hälfte oder ein Drittel; wenn wirklich für Registration, dann Alpha deutlich höher setzen
 
-\subsubsection{Sonstige Verarbeitungsschritte} 
-
-\subsubsection{Prediction per Random Forest} 
-
-\section{Ansatz Deep Learning}
+\section{Ansatz Deep Learning - Ergebnisse}
+% mit den letzten drei Parametern etwas rumspielen, Query Radius jeweils jeder Radius, der auch im Featureansatz verwendet
 
 \section{Postprocessing}
+% vorher-nachher zeigen mit Bild sowie Metrics (vllt. für meinen Ansatz und für PointNet)
 
-% immer subsections mit (tlw. Vergleichen mittels) Bildern, Plots, Metrics und Performance PLUS Erklärungen/Vermutungen
-% auch eingehen auf Speicherverbrauch (nicht nur Dauer) und Tradeoff dazwischen -> evtl. auch kleine Techniken zur Speicherreduktion (mehrere 0.0er Bins in Folge, ist auch weniger Noise)
+% \section{Zusammenfassung} 
+% paar Sätze zum Vergleich der Ansätze, obwohl im Fazit direkt danach wsh. auch
 
-% Kapitel noch anders strukturieren, mehr auf Vergleich aufbauen zwischen beiden Ansätzen
-% PointNet mit gleichen Scales wie ich (einzelne ausprobieren und vergleichen mit Gesamtleistung von mir)
-% PointNet: schauen, ob Parameter wie neighborhood size anzupassen sind
+% --------------------------------------------------------------------------------------------------------------------------------------------------------
+% immer subsections mit Bildern, Metrics und Performance (ggf. Plots/meine Featurehists, Confusion Matrices auch sinnvoll) PLUS Erklärungen/Vermutungen
+% auch eingehen auf (maximalen) Speicherverbrauch (nicht nur Dauer) und Tradeoff dazwischen, deswegen vorher Histogram refactoren
 
 % zum Schluss nochmal alles probieren mit zusätzlichem Gehweg, Bordsteinkante plus Noise; je nach Ergebnissen darauf eingehen oder nicht...
 % darauf eingehen, dass künstliche Schlaglöcher erzeugt?
